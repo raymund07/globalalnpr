@@ -1,0 +1,91 @@
+var analyticsImpls = [];
+var eventCallbacks = 0;
+var eventCallback = 0;
+
+function analyticsSignup(id) {
+    for(var i=0; i<analyticsImpls.length; i++)
+        analyticsImpls[i]['analyticsSignup'](id);
+}
+
+function analyticsLogout() {
+    for(var i=0; i<analyticsImpls.length; i++)
+        analyticsImpls[i]['analyticsLogout']();
+}
+
+function analyticsUserProperties(propertiesArray) {
+    for(var i=0; i<analyticsImpls.length; i++)
+       analyticsImpls[i]['analyticsUserProperties'](propertiesArray); 
+}
+
+function analyticsIncUserProperty(name) {
+    analyticsIncUserPropertyByNum(name,1);
+
+}
+
+function analyticsIncUserPropertyByNum(name,num) {
+    for(var i=0; i<analyticsImpls.length; i++)
+        analyticsImpls[i]['analyticsIncUserProperty'](name, num);
+}
+
+function analyticsEvent(name, propertiesArray, callback) {
+    eventCallbacks = 0;
+    eventCallback = callback;
+    if (callback) {
+        setTimeout(function () {
+            if (eventCallback) {
+                eventCallback();
+                eventCallback = undefined;
+            }
+        }, 2000);
+    }
+
+    for(var i=0; i<analyticsImpls.length; i++) {
+        analyticsImpls[i]['analyticsEvent'](name, propertiesArray, function () {
+            eventCallbacks++;
+            if (eventCallbacks==analyticsImpls.length)
+                if (eventCallback) {
+                    eventCallback();
+                    eventCallback=undefined;
+                }
+        });
+    }
+}
+
+function analyticsRevenue(productId, price, transactionId, coupon) {
+    for(var i=0; i<analyticsImpls.length; i++)
+        analyticsImpls[i]['analyticsRevenue'](productId, price, transactionId, coupon);
+}
+
+
+function analyticsGetDeviceId(callback) {
+    var timeout = setTimeout(function () {
+        callback(undefined);
+    }, 2000);
+
+    var a = analyticsImpls.slice(0);
+    _analyticsReportGetDeviceId(a,function(dId) {
+        clearTimeout(timeout);
+        callback(dId);
+    },undefined);
+}
+
+function _analyticsReportGetDeviceId(a,realcallback,result) {
+    var o = a.shift();
+
+    if (!o) {
+        realcallback(result);
+        return;
+    }
+
+    o['analyticsGetDeviceId'](function(id) {
+        var newresult = result;
+        if (id) {
+            if (newresult)
+                newresult+=","+id;
+            else
+                newresult=id;
+        }
+
+        _analyticsReportGetDeviceId(a,realcallback,newresult);
+    });
+}

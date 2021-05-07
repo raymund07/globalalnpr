@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Gleek - Bootstrap Admin Dashboard HTML Template</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
+    <!-- Custom Stylesheet -->
+    <link href="http://localhost/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- jQuery first, then Popper.js, Bootstrap JS, Knockout -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+  
+    
+</head>
+
+<body>
+    
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+
+    
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <!--**********************************
+            Nav header start
+        ***********************************-->
+        <div class="nav-header">
+            <div class="brand-logo"><a href="index.html"><b><img src="../../assets/images/logo.png" alt=""> </b><span class="brand-title"><img src="../../assets/images/logo-text.png" alt=""></span></a>
+            </div>
+            <div class="nav-control">
+                <div class="hamburger"><span class="line"></span>  <span class="line"></span>  <span class="line"></span>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Nav header end
+        ***********************************-->
+
+        <!--**********************************
+            Header start
+        ***********************************-->
+        <div class="header">    
+            <div class="header-content">
+                <div class="header-left">
+                    <ul>
+                        <li class="icons position-relative"><a href="javascript:void(0)"><i class="icon-magnifier f-s-16"></i></a>
+                            <div class="drop-down animated bounceInDown">
+                                <div class="dropdown-content-body">
+                                    <div class="header-search" id="header-search">
+                                        <form action="#">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Search">
+                                                <div class="input-group-append"><span class="input-group-text"><i class="icon-magnifier"></i></span>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="header-right">
+                    <ul>
+                        <li class="icons">
+                            <a href="javascript:void(0)">
+                                <i class="mdi mdi-comment"></i>
+                                <div class="pulse-css"></div>
+                            </a>
+                            <div class="drop-down animated bounceInDown">
+                                <div class="dropdown-content-heading">
+                                    <span class="pull-left">Messages</span>  
+                                    <a href="javascript:void()" class="pull-right text-white">View All</a>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="icons">
+                            <a href="javascript:void(0)">
+                                <i class="mdi mdi-bell"></i>
+                                <div class="pulse-css"></div>
+                            </a>
+                            
+                        </li>
+                        <li class="icons">
+                            <a href="javascript:void(0)" class="log-user">
+                                <img src="../../assets/images/avatar/1.jpg" alt=""> <span>George Martin</span>  <i class="fa fa-caret-down f-s-14" aria-hidden="true"></i>
+                            </a>
+                            <div class="drop-down dropdown-profile animated bounceInDown">
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                        <li><a href="javascript:void()"><i class="icon-user"></i> <span>My Profile</span></a>
+                                        </li>
+                                        <li><a href="javascript:void()"><i class="icon-wallet"></i> <span>My Wallet</span></a>
+                                        </li>
+                                        <li><a href="javascript:void()"><i class="icon-envelope"></i> <span>Inbox</span></a>
+                                        </li>
+                                        <li><a href="javascript:void()"><i class="fa fa-cog"></i> <span>Setting</span></a>
+                                        </li>
+                                        <li><a href="javascript:void()"><i class="icon-lock"></i> <span>Lock Screen</span></a>
+                                        </li>
+                                        <li><a href="javascript:void()"><i class="icon-power"></i> <span>Logout</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Header end
+        ***********************************-->
+
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <div class="nk-sidebar">           
+            <div class="nk-nav-scroll">
+                <ul class="metismenu" id="menu">
+                    <li class="nav-label">Dashboard</li>
+                    <li class="mega-menu mega-menu-lg">
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="mdi mdi-view-dashboard"></i><span class="nav-text">Dashboard</span><span class="badge bg-dpink text-white nav-badge"></span>
+                        </a>
+                  
+                    </li>
+     
+                   
+         
+                
+            </div>
+        </div>
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <div class="container-fluid">
+                <div class="row page-titles">
+                    <div class="col p-0">
+                        <h4><span>Automatic License Plate Recognition</span></h4>
+                    </div>
+                    <div class="col p-0">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Layout</a>
+                            </li>
+                            <li class="breadcrumb-item active">Blank</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="row">
+                                <div class="col-lg-9 pr-lg-0">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between mb-3">
+                                            <h4 class="card-title">Global Machine Learning Engine - Prototype </h4>
+                                            <div class="sorting-box d-flex">
+                                                <!-- <ul class="morris-chart-filter">
+                                                    <li>Past 24 Hours</li>
+                                                    <li>Past 07 Days</li>
+                                                    <li>Past 30 Days</li>
+                                                </ul> -->
+                                            </div>
+                                        </div>
+                                        <div class="chart">
+                                               <form action="http://127.0.0.1:5000/uploader" method="POST" enctype="multipart/form-data" id="form-id">
+
+    <!-- The file to upload -->
+    <p><input id="file-id" type="file" name="file[]" multiple onchange="readURL(this);"/></p>
+
+    <!-- Submit button -->
+    <p><input type="submit" value="Submit" id="submit-button"/></p>
+    </form>
+
+    <!-- Display upload status here -->
+    <p id="upload-status"></p>
+
+    <!-- Show the number of plates found -->
+    <span id="num-plates-ind" <p>Found <span  data-bind="text: numPlates()"></span> plate(s)</p> </span>
+
+    <!-- Show the number of images processed -->
+    <span id="num-images-ind" <p> in <span  data-bind="text: numImages()"></span> images(s)</p> </span>
+
+    <!-- Show the processing time -->
+    <span id="time-to-process" <p>processed in <span  data-bind="text: processingTime()"></span> seconds</p> </span>
+
+    <!-- The original uploaded image -->
+    <!-- Image resize dimensions are defined in style sheet -->
+    <img class="resize" id="car" src="#" alt="no image available" /><br>
+
+    <!-- The annotated image -->
+    <!-- Create a canvas that can be used to display the annotated image -->
+    <!-- The canvas will display the original image, overlayed with boxes for the license plate(s), and the license plate text -->
+    <canvas id="myCanvas" style="border:1px solid #d3d3d3;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 pl-lg-0">
+                                    <div class="card-body bg-primary sale-report d-flex align-items-center">
+                                        <div class="wrapper flex-fill text-center text-lg-left text-white">
+                                            
+                                            <h4 class="mb-5">Plate Number<b data-bind="text: plateText"></b></h4>
+                                            <div class="d-flex d-lg-block justify-content-between main-report">
+                                                <table class="table table-striped">
+                                                    <!--- Column header --->
+                                                    <tr><td style="width: 1px;"><b>Image File Name</b></td><td><b>Plate</b></td><td><b>Plate Box</b></td><td><b>Text Boxes</b></td></tr>
+                                                    <!-- ko foreach: images -->
+                                                      <!-- ko foreach: imageResults  -->
+                                                        <!-- Seems that the enclosing <tr> is required, otherwise the terminating /ko cannot be found
+                                                        this seems to be something to do with, the ko block being in one tree branch. The <td> elements create 
+                                                        separate tree branches, so the enclosing <tr> is required -->
+                                                        <tr>
+                                                          <td><b data-bind="text: imageName"></b></td>
+                                          
+                                                          <td><b data-bind="text: plateBox"></b></td>
+                                                          <td><b data-bind="text: textBoxes"></b></td>
+                                                        </tr>
+                                                      <!-- /ko -->
+                                                    <!-- /ko -->
+                                                  </table>
+                                            </div>
+                                            <p class="mt-5">Go! 7:30 PM Anglo-Saxon Friday at Anglo-Saxon London</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #/ container -->
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+        
+        
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright &copy; Designed by <a href="https://themeforest.net/user/digitalheaps">Global Agility Solutions</a></p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        
+        <!--**********************************
+            Right sidebar start
+        ***********************************-->
+        <div class="sidebar-right">
+            <a class="sidebar-right-trigger" href="javascript:void(0)">
+                <span><i class="mdi mdi-tune"></i></span>
+            </a>
+            <div class="sidebar-right-inner">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item"><a class="nav-link active show" data-toggle="tab" href="#home8"><span><i class="mdi mdi-wrench" aria-hidden="true"></i>
+                    </span></a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#profile8"><span><i class="mdi mdi-reload" aria-hidden="true"></i>
+                    </span></a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#messages8"><span><i class="mdi mdi-message-reply-text" aria-hidden="true"></i>
+                    </span></a>
+                    <!-- </li><li class="nav-item"><a class="nav-link" data-toggle="tab" href="#messages9"><span><i class="fa fa-cog"></i></span></a>
+                    </li> -->
+                </ul>
+
+                <div class="tab-content tab-content-default tabcontent-border">
+                    <div class="tab-pane fade active show" id="home8" role="tabpanel">
+                        <div class="admin-settings">
+                            <h4>Pick your style</h4>
+                            <div>
+                                <p>Background</p>
+                                <select class="form-control" name="theme_version" id="theme_version">
+                                    <option value="light">Light</option>
+                                    <option value="dark">Dark</option>
+                                </select>
+                            </div>
+                            <div>
+                                <p>Layout</p>
+                                <select class="form-control" name="theme_layout" id="theme_layout">
+                                    <option value="vertical">Vertical</option>
+                                    <option value="horizontal">Horizontal</option>
+                                </select>
+                            </div>
+                            <div>
+                                <p>Sidebar</p>
+                                <select class="form-control" name="sidebar_style" id="sidebar_style">
+                                    <option value="full">Full</option>
+                                    <option value="mini">Mini</option>
+                                    <option value="compact">Compact</option>
+                                    <option value="overlay">Overlay</option>
+                                </select>
+                            </div>
+                            <div>
+                                <p>Sidebar position</p>
+                                <select class="form-control" name="sidebar_position" id="sidebar_position">
+                                    <option value="static">Static</option>
+                                    <option value="fixed">Fixed</option>
+                                </select>
+                            </div>
+                            <div>
+                                <p>Header position</p>
+                                <select class="form-control" name="header_position" id="header_position">
+                                    <option value="static">Static</option>
+                                    <option value="fixed">Fixed</option>
+                                </select>
+                            </div>
+                            <div>
+                                <p>Container</p>
+                                <select class="form-control" name="container_layout" id="container_layout">
+                                    <option value="wide">Wide</option>
+                                    <option value="boxed">Boxed</option>
+                                    <option value="wide-boxed">Wide Boxed</option>
+                                </select>
+                            </div>
+                            <div>
+                                <p>Direction</p>
+                                <select class="form-control" name="theme_direction" id="theme_direction">
+                                    <option value="ltr">LTR</option>
+                                    <option value="rtl">RTL</option>
+                                </select>
+                            </div>
+                            <div>
+                                <p>Navigation Header</p>
+                                <div>
+                                    <span>
+                                        <input type="radio" name="navigation_header" value="color_1" class="filled-in chk-col-primary" id="nav_header_bg_1">
+                                        <label for="nav_header_bg_1"></label>
+                                    </span>
+                                    <span>
+                                        <input type="radio" name="navigation_header" value="color_2" class="filled-in chk-col-primary" id="nav_header_bg_2">
+                                        <label for="nav_header_bg_2"></label>
+                                    </span>
+                                    <span>
+                                        <input type="radio" name="navigation_header" value="color_3" class="filled-in chk-col-primary" id="nav_header_bg_3">
+                                        <label for="nav_header_bg_3"></label>
+                                    </span>
+                                    <span>
+                                        <input type="radio" name="navigation_header" value="color_4" class="filled-in chk-col-primary" id="nav_header_bg_4">
+                                        <label for="nav_header_bg_4"></label>
+                                    </span>
+                                    <span>
+                                        <input type="radio" name="navigation_header" value="color_5" class="filled-in chk-col-primary" id="nav_header_bg_5">
+                                        <label for="nav_header_bg_5"></label>
+                                    </span>
+                                    <span>
+                                        <input type="radio" name="navigation_header" value="color_6" class="filled-in chk-col-primary" id="nav_header_bg_6">
+                                        <label for="nav_header_bg_6"></label>
+                                    </span>
+                                    <span>
+                                        <input type="radio" name="navigation_header" value="color_7" class="filled-in chk-col-primary" id="nav_header_bg_7">
+                                        <label for="nav_header_bg_7"></label>
+                                    </span>
+                                    <span>
+                                        <input type="radio" name="navigation_header" value="color_8" class="filled-in chk-col-primary" id="nav_header_bg_8">
+                                        <label for="nav_header_bg_8"></label>
+                                    </span>
+                                    <span>
+                                        <input type="radio" name="navigation_header" value="color_9" class="filled-in chk-col-primary" id="nav_header_bg_9">
+                                        <label for="nav_header_bg_9"></label>
+                                    </span>
+                                    <span>
+                                        <input type="radio" name="navigation_header" value="color_10" class="filled-in chk-col-primary" id="nav_header_bg_10">
+                                        <label for="nav_header_bg_10"></label>
+                                    </span>
+                                </div>
+                            </div>
+                            <div>
+                                <p>Header</p>
+                                <div>
+                                    <span>
+                                        <input type="radio" name="header_bg" value="color_1" class="filled-in chk-col-primary" id="header_bg_1">
+                                        <label for="header_bg_1"></label>
+                                    </span>
+                                    <span>
+                                        <input type="radio" name="header_bg" value="color_2" class="filled-in chk-col-primary" id="header_bg_2">
+                                        <label for="header_bg_2"></label>
+                                    </span>
+                                    <span>
+                                        <input type="radio" name="header_bg" value="color_3" class="filled-in chk-col-primary" id="header_bg_3">
+                                        <label for="header_bg_3"></label>
+                                    </span>
+                                    <span>
+                                        <input type="radio" name="header_bg" value="color_4" class="filled-in chk-col-primary" id="header_bg_4">
+                                        <label for="header_bg_4"></label>
+                                    </span>
+                                    <span>
+                                        <input type="radio" name="header_bg" value="color_5" class="filled-in chk-col-primary" id="header_bg_5">
+                                        <label for="header_bg_5"></label>
+                                    </span>
+                                    <span>
+                                        <input type="radio" name="header_bg" value="color_6" class="filled-in chk-col-primary" id="header_bg_6">
+                                        <label for="header_bg_6"></label>
+                                    </span>
+                                    <span>
+                                        <input type="radio" name="header_bg" value="color_7" class="filled-in chk-col-primary" id="header_bg_7">
+                                        <label for="header_bg_7"></label>
+                                    </span>
+                                    <span>
+                                        <input type="radio" name="header_bg" value="color_8" class="filled-in chk-col-primary" id="header_bg_8">
+                                        <label for="header_bg_8"></label>
+                                    </span>
+                                    <span>
+                                        <input type="radio" name="header_bg" value="color_9" class="filled-in chk-col-primary" id="header_bg_9">
+                                        <label for="header_bg_9"></label>
+                                    </span>
+                                    <span>
+                                        <input type="radio" name="header_bg" value="color_10" class="filled-in chk-col-primary" id="header_bg_10">
+                                        <label for="header_bg_10"></label>
+                                    </span>
+                                </div>
+                            </div>
+                            <div>
+                                <p>Sidebar</p>
+                                <div>
+                                    <span>
+                                        <input type="radio" name="sidebar_bg" value="color_1" class="filled-in chk-col-primary" id="sidebar_bg_1">
+                                        <label for="sidebar_bg_1"></label>
+                                    </span>
+                                    <span>
+                                        <input type="radio" name="sidebar_bg" value="color_2" class="filled-in chk-col-primary" id="sidebar_bg_2">
+                                        <label for="sidebar_bg_2"></label>
+                                    </span>
+                                    <span>
+                                        <input type="radio" name="sidebar_bg" value="color_3" class="filled-in chk-col-primary" id="sidebar_bg_3">
+                                        <label for="sidebar_bg_3"></label>
+                                    </span>
+                                    <span>
+                                        <input type="radio" name="sidebar_bg" value="color_4" class="filled-in chk-col-primary" id="sidebar_bg_4">
+                                        <label for="sidebar_bg_4"></label>
+                                    </span>
+                                    <span>
+                                        <input type="radio" name="sidebar_bg" value="color_5" class="filled-in chk-col-primary" id="sidebar_bg_5">
+                                        <label for="sidebar_bg_5"></label>
+                                    </span>
+                                    <span>
+                                        <input type="radio" name="sidebar_bg" value="color_6" class="filled-in chk-col-primary" id="sidebar_bg_6">
+                                        <label for="sidebar_bg_6"></label>
+                                    </span>
+                                    <span>
+                                        <input type="radio" name="sidebar_bg" value="color_7" class="filled-in chk-col-primary" id="sidebar_bg_7">
+                                        <label for="sidebar_bg_7"></label>
+                                    </span>
+                                    <span>
+                                        <input type="radio" name="sidebar_bg" value="color_8" class="filled-in chk-col-primary" id="sidebar_bg_8">
+                                        <label for="sidebar_bg_8"></label>
+                                    </span>
+                                    <span>
+                                        <input type="radio" name="sidebar_bg" value="color_9" class="filled-in chk-col-primary" id="sidebar_bg_9">
+                                        <label for="sidebar_bg_9"></label>
+                                    </span>
+                                    <span>
+                                        <input type="radio" name="sidebar_bg" value="color_10" class="filled-in chk-col-primary" id="sidebar_bg_10">
+                                        <label for="sidebar_bg_10"></label>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="profile8" role="tabpanel">
+                        <div class="sidebar-recent-activity ">
+                            <h4 class="card-title">Recent Activity</h4>
+                            <div class="timeline_content">
+                                <ul class="timeline timeline-workplan">
+                                    <li class="timeline-inverted">
+                                        <div class="timeline-badge"></div>
+                                        <div class="timeline-panel">
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <p>After 3 hours</p>
+                                                    <h6 class="mt-0 mb-0"><a href="javascript:void()" class="text-primary">Space X</a> is going to launch a Rocket</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="timeline-inverted">
+                                        <div class="timeline-badge"></div>
+                                        <div class="timeline-panel">
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <p>5 minites ago</p>
+                                                    <h6 class="mt-0 mb-0"><a href="javascript:void()" class="text-primary">Niloy</a> commented on your photo</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="timeline-inverted">
+                                        <div class="timeline-badge"></div>
+                                        <div class="timeline-panel">
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <p>1 hour ago</p>
+                                                    <h6 class="mt-0 mb-0"><a href="javascript:void()" class="text-primary">Bill Gates</a> likes your photo</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="timeline-inverted">
+                                        <div class="timeline-badge"></div>
+                                        <div class="timeline-panel">
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <p>2 hours ago</p>
+                                                    <h6 class="mt-0 mb-0"><a href="javascript:void()" class="text-primary">You</a> reacted on <a href="javascript:void()" class="text-primary">Shelly</a>'s photo</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="timeline-inverted">
+                                        <div class="timeline-badge"></div>
+                                        <div class="timeline-panel">
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <p>2 days ago</p>
+                                                    <h6 class="mt-0 mb-0"><a href="" class="text-primary">Elon Mask</a> invited you on an <a href="javascript:void()" class="text-primary">Event</a></h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="timeline-inverted">
+                                        <div class="timeline-badge"></div>
+                                        <div class="timeline-panel">
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <p>3 days ago</p>
+                                                    <h6 class="mt-0 mb-0"><a href="" class="text-primary">Mark Jukarbarg</a> invited you on <a href="javascript:void()" class="text-primary">Facebook</a></h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-work-progress">
+                            <h4 class="card-title mb-5">Daily prograss</h4>
+                            <div class="progress-wrapper">
+                                <h6 class="mb-3">Light Weight Lifting</h6>
+                                <div class="progress mb-5">
+                                    <div class="progress-bar bg-warning" style="width: 80%; height:6px;" role="progressbar"><span class="sr-only">60% Complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="progress-wrapper">
+                                <h6 class="mb-3">Push Ups</h6>
+                                <div class="progress mb-5">
+                                    <div class="progress-bar bg-danger" style="width: 60%; height:6px;" role="progressbar"><span class="sr-only">60% Complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="progress-wrapper">
+                                <h6 class="mb-3">Step Aerobics</h6>
+                                <div class="progress mb-5">
+                                    <div class="progress-bar bg-dpink" style="width: 70%; height:6px;" role="progressbar"><span class="sr-only">60% Complete</span>
+                                    </div>
+                                </div>
+                            </div>  
+                            <div class="progress-wrapper">
+                                <h6 class="mb-3">Down Aerobics</h6>
+                                <div class="progress mb-5">
+                                    <div class="progress-bar bg-lgreen" style="width: 90%; height:6px;" role="progressbar"><span class="sr-only">60% Complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="messages8" role="tabpanel">
+                        <div class="user-chat">
+                            <ul class="list-group all-chats">
+                                <li class="list-group-item single-chat border-0">
+                                    <div class="media align-items-center">
+                                        <div class="user-img mr-3">
+                                            <span class="activity active"></span>
+                                            <img src="../../assets/images/user/1.png" height="40" width="40" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <h6 class="mb-0">Lurch Schpel</h6>
+                                            <small>Online</small>
+                                        </div>
+                                        <a href="javascript:void()" class="chat-open d-inline-block px-2 py-1">
+                                            <i class="fa fa-comment-o"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="list-group-item single-chat border-0">
+                                    <div class="media align-items-center">
+                                        <div class="user-img mr-3">
+                                            <span class="activity inactive"></span>
+                                            <img src="../../assets/images/user/2.png" height="40" width="40" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <h6 class="mb-0">Lurch Schpel</h6>
+                                            <small>22 minites ago</small>
+                                        </div>
+                                        <a href="javascript:void()" class="chat-open d-inline-block px-2 py-1">
+                                            <i class="fa fa-comment-o"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="list-group-item single-chat border-0">
+                                    <div class="media align-items-center">
+                                        <div class="user-img mr-3">
+                                            <span class="activity active"></span>
+                                            <img src="../../assets/images/user/3.png" height="40" width="40" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <h6 class="mb-0">Lurch Schpel</h6>
+                                            <small>Online</small>
+                                        </div>
+                                        <a href="javascript:void()" class="chat-open d-inline-block px-2 py-1">
+                                            <i class="fa fa-comment-o"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="list-group-item single-chat border-0">
+                                    <div class="media align-items-center">
+                                        <div class="user-img mr-3">
+                                            <span class="activity active"></span>
+                                            <img src="../../assets/images/user/4.png" height="40" width="40" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <h6 class="mb-0">Lurch Schpel</h6>
+                                            <small>Online</small>
+                                        </div>
+                                        <a href="javascript:void()" class="chat-open d-inline-block px-2 py-1">
+                                            <i class="fa fa-comment-o"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="list-group-item single-chat border-0">
+                                    <div class="media align-items-center">
+                                        <div class="user-img mr-3">
+                                            <span class="activity inactive"></span>
+                                            <img src="../../assets/images/user/4.jpg" height="40" width="40" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <h6 class="mb-0">Lurch Schpel</h6>
+                                            <small>26 minites ago</small>
+                                        </div>
+                                        <a href="javascript:void()" class="chat-open d-inline-block px-2 py-1">
+                                            <i class="fa fa-comment-o"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="list-group-item single-chat border-0">
+                                    <div class="media align-items-center">
+                                        <div class="user-img mr-3">
+                                            <span class="activity active"></span>
+                                            <img src="../../assets/images/user/6.jpg" height="40" width="40" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <h6 class="mb-0">Lurch Schpel</h6>
+                                            <small>Online</small>
+                                        </div>
+                                        <a href="javascript:void()" class="chat-open d-inline-block px-2 py-1">
+                                            <i class="fa fa-comment-o"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="list-group-item single-chat border-0">
+                                    <div class="media align-items-center">
+                                        <div class="user-img mr-3">
+                                            <span class="activity active"></span>
+                                            <img src="../../assets/images/user/7.jpg" height="40" width="40" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <h6 class="mb-0">Lurch Schpel</h6>
+                                            <small>Online</small>
+                                        </div>
+                                        <a href="javascript:void()" class="chat-open d-inline-block px-2 py-1">
+                                            <i class="fa fa-comment-o"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="list-group-item single-chat border-0">
+                                    <div class="media align-items-center">
+                                        <div class="user-img mr-3">
+                                            <span class="activity active"></span>
+                                            <img src="../../assets/images/user/8.png" height="40" width="40" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <h6 class="mb-0">Lurch Schpel</h6>
+                                            <small>Online</small>
+                                        </div>
+                                        <a href="javascript:void()" class="chat-open d-inline-block px-2 py-1">
+                                            <i class="fa fa-comment-o"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="list-group-item single-chat border-0">
+                                    <div class="media align-items-center">
+                                        <div class="user-img mr-3">
+                                            <span class="activity active"></span>
+                                            <img src="../../assets/images/user/1.png" height="40" width="40" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <h6 class="mb-0">Lurch Schpel</h6>
+                                            <small>Online</small>
+                                        </div>
+                                        <a href="javascript:void()" class="chat-open d-inline-block px-2 py-1">
+                                            <i class="fa fa-comment-o"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="list-group-item single-chat border-0">
+                                    <div class="media align-items-center">
+                                        <div class="user-img mr-3">
+                                            <span class="activity active"></span>
+                                            <img src="../../assets/images/user/4.png" height="40" width="40" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <h6 class="mb-0">Lurch Schpel</h6>
+                                            <small>Online</small>
+                                        </div>
+                                        <a href="javascript:void()" class="chat-open d-inline-block px-2 py-1">
+                                            <i class="fa fa-comment-o"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="list-group-item single-chat border-0">
+                                    <div class="media align-items-center">
+                                        <div class="user-img mr-3">
+                                            <span class="activity inactive"></span>
+                                            <img src="../../assets/images/user/2.png" height="40" width="40" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <h6 class="mb-0">Lurch Schpel</h6>
+                                            <small>52 minites ago</small>
+                                        </div>
+                                        <a href="javascript:void()" class="chat-open d-inline-block px-2 py-1">
+                                            <i class="fa fa-comment-o"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="list-group-item single-chat border-0">
+                                    <div class="media align-items-center">
+                                        <div class="user-img mr-3">
+                                            <span class="activity inactive"></span>
+                                            <img src="../../assets/images/user/2.png" height="40" width="40" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <h6 class="mb-0">Lurch Schpel</h6>
+                                            <small>22 Hours ago</small>
+                                        </div>
+                                        <a href="javascript:void()" class="chat-open d-inline-block px-2 py-1">
+                                            <i class="fa fa-comment-o"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="list-group-item single-chat border-0">
+                                    <div class="media align-items-center">
+                                        <div class="user-img mr-3">
+                                            <span class="activity active"></span>
+                                            <img src="../../assets/images/user/6.jpg" height="40" width="40" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <h6 class="mb-0">Lurch Schpel</h6>
+                                            <small>Online</small>
+                                        </div>
+                                        <a href="javascript:void()" class="chat-open d-inline-block px-2 py-1">
+                                            <i class="fa fa-comment-o"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="list-group-item single-chat border-0">
+                                    <div class="media align-items-center">
+                                        <div class="user-img mr-3">
+                                            <span class="activity active"></span>
+                                            <img src="../../assets/images/user/3.png" height="40" width="40" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <h6 class="mb-0">Lurch Schpel</h6>
+                                            <small>Online</small>
+                                        </div>
+                                        <a href="javascript:void()" class="chat-open d-inline-block px-2 py-1">
+                                            <i class="fa fa-comment-o"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="list-group-item single-chat border-0">
+                                    <div class="media align-items-center">
+                                        <div class="user-img mr-3">
+                                            <span class="activity inactive"></span>
+                                            <img src="../../assets/images/user/8.png" height="40" width="40" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <h6 class="mb-0">Lurch Schpel</h6>
+                                            <small>6 Hours ago</small>
+                                        </div>
+                                        <a href="javascript:void()" class="chat-open d-inline-block px-2 py-1">
+                                            <i class="fa fa-comment-o"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Right sidebar end
+        ***********************************-->
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <script src="../../assets/plugins/common/common.min.js"></script>
+    <script src="../js/custom.min.js"></script>
+    <script src="../js/settings.js"></script>
+    <script src="../templates/js/gleek.js"></script>
+    <script src="../js/styleSwitcher.js"></script>
+</body>
+
+</html>
+<script>
+
+    // View Model
+    var AppViewModel = function() {
+      var self = this;
+      self.images = ko.observableArray();
+      self.numPlates = ko.observable();
+      self.numPlates(0);
+      self.numImages = ko.observable();
+      self.numImages(0);
+      self.processingTime = ko.observable();
+      self.processingTime(0);
+      document.getElementById("num-plates-ind").style.display = "none";
+      document.getElementById("num-images-ind").style.display = "none";
+      document.getElementById("time-to-process").style.display = "none";
+    
+      self.displayImageInCanvas = function() {
+        var c=document.getElementById("myCanvas");
+        var ctx=c.getContext("2d");
+        var img=document.getElementById("car");
+        c.width = img.offsetWidth;
+        c.height = img.offsetHeight; 
+        ctx.drawImage(img,0,0,c.width, c.height);  
+      }
+    
+    
+      self.drawRectangle = function(startX, startY, extentX, extentY) {
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        ctx.beginPath();
+        ctx.rect(startX * c.width, startY * c.height, extentX * c.width, extentY * c.height);
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = 'red';
+        ctx.stroke();
+      }
+    
+      // Add plate and text boxes to myCanvas
+      self.addPlatesToVM = function(response) {
+        self.displayImageInCanvas();
+        self.numImages(response.numImages);
+        self.numPlates(response.numPlates);
+        self.processingTime(response.processingTime.toFixed(2));
+        self.images([]);
+        console.log(response.images.length);
+        console.log(response);
+        for (var i = 0; i < response.images.length; i++) {
+          var imageResults = [];
+          for (var j = 0; j < response.images[i].imageResults.length; j++) {
+            imageResults.push( {
+              imageName: ko.observable(response.images[i].imagePath),
+              plateText: ko.observable(response.images[i].imageResults[j].plateText),
+              plateBox: ko.observable(response.images[i].imageResults[j].plateBoxLoc),
+              textBoxes: ko.observable(response.images[i].imageResults[j].charBoxLocs)
+            });
+            // predict_images coordinate system (startY, startX, endY, endX)
+            // TFOD coordinate system [ymin, xmin, ymax, xmax] 
+            // HTML canvas coordinate system (startX, startY, xExtents, yExtents)
+            startY = response.images[i].imageResults[j].plateBoxLoc[0]
+            startX = response.images[i].imageResults[j].plateBoxLoc[1]
+            endY = response.images[i].imageResults[j].plateBoxLoc[2]
+            endX = response.images[i].imageResults[j].plateBoxLoc[3]
+            // If this is the first image, then annotate the image with boxes for plates and plate chars
+            if (i == 0) {
+              self.drawRectangle(startX, startY, endX - startX, endY - startY);
+              for (var k = 0; k < response.images[i].imageResults[j].charBoxLocs.length; k++) {
+                startY = response.images[i].imageResults[j].charBoxLocs[k][0]
+                startX = response.images[i].imageResults[j].charBoxLocs[k][1]
+                endY = response.images[i].imageResults[j].charBoxLocs[k][2]
+                endX = response.images[i].imageResults[j].charBoxLocs[k][3]
+                self.drawRectangle(startX, startY, endX - startX, endY - startY);
+              }
+            }
+          }
+          //console.log(imageResults);
+          self.images.push({"imageResults": imageResults});
+          console.log("addPlatesToVM: .imageResults");
+          console.log(imageResults);
+        }
+      }
+    
+    
+      // Once the FormData instance is ready and we know
+      // where to send the data, the code is the same
+      // for both variants of this technique
+      self.sendXHRequest = function(formData, uri) {
+        // Get an XMLHttpRequest instance
+        var xhr = new XMLHttpRequest();
+        // Set up events
+        xhr.upload.addEventListener('loadstart', onloadstartHandler, false);
+        xhr.upload.addEventListener('load', onloadHandler, false);
+        // Set up request
+        xhr.open('POST', uri, true);
+        // Set json response type
+        xhr.responseType = 'json';
+        // Fire!
+        xhr.send(formData);
+        // Disable the submit button to prevent new submissions whilst processing the curent image
+        document.getElementById("submit-button").disabled = true;
+        // Display the response. This is a call back function, that will be called when the image processing is complete
+        xhr.onload = function() {
+          console.log(xhr.responseURL);
+          let responseObj = xhr.response;
+          console.log(responseObj);
+          // Annotate the canvas with plate and text boxes
+          self.addPlatesToVM(responseObj);
+    
+          // Show that the processing is complete
+          var status = document.getElementById('upload-status');
+          status.innerHTML = 'Processing complete!';
+    
+          // enable the display of the "number of plates found"
+          document.getElementById("num-plates-ind").style.display = "block";
+    
+          // enable the display of the "number of images found"
+          document.getElementById("num-images-ind").style.display = "block";
+    
+          // enable the display of the "processing time"
+          document.getElementById("time-to-process").style.display = "block";
+    
+          // re-enable the submit button
+          document.getElementById("submit-button").disabled = false;
+    
+        };
+      }
+    
+      // Function that will allow us to know if Ajax uploads are supported
+      self.supportAjaxUploadWithProgress = function() {
+        return supportFileAPI() && supportAjaxUploadProgressEvents() && supportFormData();
+        // Is the File API supported?
+        function supportFileAPI() {
+          var fi = document.createElement('INPUT');
+          fi.type = 'file';
+          return 'files' in fi;
+        };
+        // Are progress events supported?
+        function supportAjaxUploadProgressEvents() {
+          var xhr = new XMLHttpRequest();
+          return !! (xhr && ('upload' in xhr) && ('onprogress' in xhr.upload));
+        };
+        // Is FormData supported?
+        function supportFormData() {
+          return !! window.FormData;
+        }
+      }
+    
+      self.initFullFormAjaxUpload = function() {
+        var form = document.getElementById('form-id');
+        form.onsubmit = function() {
+          // FormData receives the whole form
+          var formData = new FormData(form);
+    
+          // Display the values
+          console.log("initFullFormAjaxUpload: formData.values()");
+          for (var value of formData.values()) {
+            console.log(value); 
+          }
+    
+          // We send the data where the form wanted
+          var action = form.getAttribute('action');
+          // Code common to both variants
+          self.sendXHRequest(formData, action);
+          // Avoid normal form submission by returning false
+          return false;
+        }
+      }
+    
+    
+    
+      // Actually confirm support
+      if (self.supportAjaxUploadWithProgress()) {
+        // Ajax uploads are supported!
+        // Change the support message and enable the upload button
+        var notice = document.getElementById('support-notice');
+        //var uploadBtn = document.getElementById('upload-button-id');
+        notice.innerHTML = "Automatic Number Plate Recognition";
+        //uploadBtn.removeAttribute('disabled');
+        // Init the Ajax form submission
+        self.initFullFormAjaxUpload();
+      }
+    
+    
+      // Handle the start of the transmission
+      function onloadstartHandler(evt) {
+        var div = document.getElementById('upload-status');
+        div.innerHTML = 'Uploading image...';
+      }
+    
+      // Handle the end of the transmission
+      function onloadHandler(evt) {
+        var div = document.getElementById('upload-status');
+        div.innerHTML = 'File uploaded. Waiting for server to process the image...';
+      }
+    
+    }; // end of AppViewModel function
+    
+    // Create an instance of AppViewModel and bind it to html section "main"
+    var appViewModel = new AppViewModel()
+    ko.applyBindings(appViewModel, document.getElementById("main"));
+    
+    
+    // Callback for   <p><input id="file-id" type="file" name="file" onchange="readURL(event);"/>
+    // Make the image available for viewing
+    function readURL(input) {
+    
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          $('#car')
+            .attr('src', e.target.result);
+        };
+        reader.readAsDataURL(input.files[0]);
+    
+        // Prompt the user to submit the image for processing
+        var status = document.getElementById('upload-status');
+        status.innerHTML = 'Click the submit button to process the image';
+    
+        // disable the display of the "number of plates found"
+        document.getElementById("num-plates-ind").style.display = "none";
+    
+        // disable the display of the "processingTime"
+        document.getElementById("time-to-process").style.display = "none";
+    
+        // disable the display of the "number of images found"
+        document.getElementById("num-images-ind").style.display = "none";
+    
+        // clear the canvas
+        var c=document.getElementById("myCanvas");
+        var ctx=c.getContext("2d");
+        ctx.clearRect(0, 0, c.width, c.height);
+      }
+    }
+    
+      </script>
+    
