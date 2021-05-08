@@ -146,6 +146,7 @@ import argparse
 import time
 import cv2
 import numpy as np
+import os
 import tensorflow as tf
 import tensorflow.compat.v1 as tf
 tf.disable_v2_behavior()
@@ -156,6 +157,8 @@ from globalhelper.plates.predicter import Predicter
 from globalhelper.plates.plateDisplay import PlateDisplay
 import statistics
 import json
+import sys
+sys.path.append("..")
 def str2bool(v):
   if v.lower() in ('yes', 'true', 't', 'y', '1'):
     return True
@@ -165,6 +168,7 @@ def str2bool(v):
     raise argparse.ArgumentTypeError('Boolean value expected.')
 model = tf.Graph()
 
+
   # create a context manager that makes this model the default one for
   # execution
 with model.as_default():
@@ -172,7 +176,8 @@ with model.as_default():
   graphDef = tf.GraphDef()
 
     # load the graph from disk
-  with tf.io.gfile.GFile('datasets/frozen_inference_graph.pb', "rb") as f:
+  basepath=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'Inferencegraphs'))
+  with tf.io.gfile.GFile('{}/character_detection.pb'.format(basepath), "rb") as f:
     serializedGraph = f.read()
     graphDef.ParseFromString(serializedGraph)
     tf.import_graph_def(graphDef, name="")
