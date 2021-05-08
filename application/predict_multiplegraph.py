@@ -11,15 +11,14 @@ from utils import visualization_utils as vis_util
 # ------------------ Character Recognition------------------------------ #
 # ------------------ Jurisdiction Detection/Localization------------------------------ #
 # ------------------ Jurisdiction Classification------------------------------ #
-plate_location = label_map_util.load_labelmap('plate/labelmap.pbtxt')
+plate_location = label_map_util.load_labelmap('classes/labelmap.pbtxt')
 plate_categories = label_map_util.convert_label_map_to_categories(plate_label_map, max_num_classes=1, use_display_name=True)
 plate_category_index = label_map_util.create_category_index(plate_categories)
-
 plate_detection_graph = tf.Graph()
 
 with plate_detection_graph.as_default():
     plate_od_graph_def = tf.GraphDef()
-    with tf.gfile.GFile('Inferencegraphs/plate_localization.pb', 'rb') as fid:
+    with tf.io.gfile.GFile('Inferencegraphs/plate_localization.pb', 'rb') as fid:
         plate_serialized_graph = fid.read()
         plate_od_graph_def.ParseFromString(plate_serialized_graph)
         tf.import_graph_def(plate_od_graph_def, name='')
@@ -71,7 +70,6 @@ with character_detection_graph.as_default():
         tf.import_graph_def(character_od_graph_def, name='')
         
 character_session = tf.Session(graph=character_detection_graph)
-print(character_session)
 character_image_tensor = character_detection_graph.get_tensor_by_name( 'image_tensor:0')
 character_detection_boxes = character_detection_graph.get_tensor_by_name( 'detection_boxes:0')
 character_detection_scores = character_detection_graph.get_tensor_by_name('detection_scores:0')
