@@ -48,7 +48,8 @@ Training Models:
 - [] Us Teritories and Other Countries (Character Recognition)- Additional Training 
 
 Deployment
-- [] Create RESTful API
+- [X] Create RESTful API ( single Model)
+- [] Create RESTful API ( multiple Model) 
 - [] Create Client App for testing
 - [] Dockerize Application 
 - [] Connect Tensorflow Serving
