@@ -61,6 +61,7 @@ Helper and Utilities
 - Data Augmentation ( for Data preprocesing)
 - Create Simple Documentation on how to connect via API
 - Automate Data Preparation 
+- Data Annotation
 
 
 - Testing: Sample Web API
