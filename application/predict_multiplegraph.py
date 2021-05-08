@@ -47,7 +47,7 @@ with character_detection_graph.as_default():
         character_od_graph_def.ParseFromString(character_serialized_graph)
         tf.import_graph_def(character_od_graph_def, name='')
 character_session = tf.Session(graph=character_detection_graph)
-
+print(character_session)
 character_image_tensor = character_detection_graph.get_tensor_by_name( 'image_tensor:0')
 character_detection_boxes = character_detection_graph.get_tensor_by_name( 'detection_boxes:0')
 character_detection_scores = character_detection_graph.get_tensor_by_name('detection_scores:0')
