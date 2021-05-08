@@ -1,4 +1,19 @@
+# Predict license plate boxes and license plate characters in images. Display the labelled images
+# USAGE
+# Example using single stage Faster RCNN
+# python predict_images.py --model datasets/experiment_faster_rcnn/1/exported_model/frozen_inference_graph.pb \
+# --pred_stages 1 \
+# --labels datasets/records/classes.pbtxt \
+# --imagePath images/1 \
+# --num-classes 37 \
+# --image_display True
 
+# python predict_images.py --model datasets/experiment_ssd/1/exported_model/frozen_inference_graph.pb \
+# --pred_stages 2 \
+# --labels datasets/records/classes.pbtxt \
+# --imagePath images/SJ7STAR_images/2018_02_24_9-00 \
+# --num-classes 37 \
+# --image_display True
 
 # import numpy as np
 # import tensorflow as tf
