@@ -46,6 +46,7 @@ with character_detection_graph.as_default():
         character_serialized_graph = fid.read()
         character_od_graph_def.ParseFromString(character_serialized_graph)
         tf.import_graph_def(character_od_graph_def, name='')
+        
 character_session = tf.Session(graph=character_detection_graph)
 print(character_session)
 character_image_tensor = character_detection_graph.get_tensor_by_name( 'image_tensor:0')
@@ -54,6 +55,30 @@ character_detection_scores = character_detection_graph.get_tensor_by_name('detec
 character_detection_classes = character_detection_graph.get_tensor_by_name( 'detection_classes:0')
 character_num_detections = character_detection_graph.get_tensor_by_name('num_detections:0')
 # ---------------------------------------------------------------------------- #
+
+# ------------------ character Model Initialization ---------------------------- #
+character_label_map = label_map_util.load_labelmap('classes/character_recognition.pbtxt')
+character_categories = label_map_util.convert_label_map_to_categories(character_label_map, max_num_classes=90, use_display_name=True)
+character_category_index = label_map_util.create_category_index(character_categories)
+
+character_detection_graph = tf.Graph()
+
+with character_detection_graph.as_default():
+    character_od_graph_def = tf.GraphDef()
+    with tf.gfile.GFile('Inferencegraphs/character_recognition.pb', 'rb') as fid:
+        character_serialized_graph = fid.read()
+        character_od_graph_def.ParseFromString(character_serialized_graph)
+        tf.import_graph_def(character_od_graph_def, name='')
+        
+character_session = tf.Session(graph=character_detection_graph)
+print(character_session)
+character_image_tensor = character_detection_graph.get_tensor_by_name( 'image_tensor:0')
+character_detection_boxes = character_detection_graph.get_tensor_by_name( 'detection_boxes:0')
+character_detection_scores = character_detection_graph.get_tensor_by_name('detection_scores:0')
+character_detection_classes = character_detection_graph.get_tensor_by_name( 'detection_classes:0')
+character_num_detections = character_detection_graph.get_tensor_by_name('num_detections:0')
+# ---------------------------------------------------------------------------- #
+
 
 
 def plate(image_path):
