@@ -193,7 +193,7 @@ print(labelsArg)
 num_classesArg=37
 min_confidenceArg=0.10
 image_displayArg=False
-pred_stagesArg=2
+pred_stagesArg=1
 # # def predictImages(labelsArg, imagePathArg, num_classesArg, min_confidenceArg, image_displayArg, pred_stagesArg):
 def predictImages():
 
