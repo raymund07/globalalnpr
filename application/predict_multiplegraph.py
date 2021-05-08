@@ -12,6 +12,7 @@ from globalhelper.utils import visualization_utils as vis_util
 # ------------------ Plate Localization------------------------------ #
 inference_path=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'inferencegraphs'))
 classes_path=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'classes'))
+base_path=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'received'))
 
 # ------------------ Plate Localization------------------------------ #
 # ------------------ Character Localization------------------------------ #+
@@ -89,7 +90,9 @@ jurisdiction_num_detections = jurisdiction_detection_graph.get_tensor_by_name('n
 def plate(image_path):
     print('Plate Detection')
     try:
-        image = cv2.imread(image_path)
+        image = cv2.imread('{}/{}'.format(base_path,image_path))
+        image = cv2.cvtColor(image.copy(), cv2.COLOR_BGR2RGB)
+ 
         image_expanded = np.expand_dims(image, axis=0)
         (boxes, scores, classes, num) = plate_session.run(
             [plate_detection_boxes, plate_detection_scores,
@@ -99,7 +102,7 @@ def plate(image_path):
         classes = np.squeeze(classes).astype(np.int32)
         scores = np.squeeze(scores)
         boxes = np.squeeze(boxes)
-      
+   
 
         object_name = []
         object_score = []
@@ -113,13 +116,15 @@ def plate(image_path):
         print("Error occurred in character detection")
         object_name = ['']
         object_score = ['']
-    
+ 
+    return {"character":object_name, "accuracy":object_score}
 
 
 def character(image_path):
     print('Character Recognition')
     try:
-        image = cv2.imread(image_path)
+        image = cv2.imread('{}/{}'.format(base_path,image_path))
+        image = cv2.cvtColor(image.copy(), cv2.COLOR_BGR2RGB)
         image_expanded = np.expand_dims(image, axis=0)
         (boxes, scores, classes, num) = character_session.run(
             [character_detection_boxes, character_detection_scores,
@@ -129,7 +134,7 @@ def character(image_path):
         classes = np.squeeze(classes).astype(np.int32)
         scores = np.squeeze(scores)
         boxes = np.squeeze(boxes)
-
+ 
         object_name = []
         object_score = []
 
@@ -143,13 +148,16 @@ def character(image_path):
         object_name = ['']
         object_score = ['']
 
-    return object_name, object_score
+    return {"character":object_name, "accuracy":object_score}
 
 def jurisdiction(image_path):
     print('Jurisdiction Recognition')
 
     try:
-        image = cv2.imread(image_path)
+        image = cv2.imread('{}/{}'.format(base_path,image_path))
+        image = cv2.cvtColor(image.copy(), cv2.COLOR_BGR2RGB)
+
+
         image_expanded = np.expand_dims(image, axis=0)
         (boxes, scores, classes, num) = plate_session.run(
             [plate_detection_boxes, plate_detection_scores,
@@ -159,6 +167,7 @@ def jurisdiction(image_path):
         classes = np.squeeze(classes).astype(np.int32)
         scores = np.squeeze(scores)
         boxes = np.squeeze(boxes)
+    
       
 
         object_name = []
@@ -174,7 +183,7 @@ def jurisdiction(image_path):
         object_name = ['']
         object_score = ['']
 
-    return object_name, object_score
+    return {"character":object_name, "accuracy":object_score}
 
 
 if __name__ == '__main__':

@@ -4,6 +4,9 @@ import base64
 import io
 from PIL import Image
 from predict_images import predictImages
+from predict_multiplegraph import plate
+from predict_multiplegraph import character
+from predict_multiplegraph import jurisdiction
 import shutil
 import os
 import subprocess
@@ -11,6 +14,7 @@ import subprocess
 # tf.disable_v2_behavior()
 
 application = Flask(__name__)
+base_path=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'received'))
 
 @application.route('/upload')
 def upload_render():
@@ -22,19 +26,34 @@ def upload_web():
 def upload_api():
   file = request.files['image']
   filename = secure_filename(file.filename)
-  #file.save('received/{}'.format(file.name))
-  file.save('uploadedImages/{}'.format(filename))
+  #file.save('{}/{}'.format(file.name))
+  file.save('{}/{}'.format(base_path,filename))
   # # Read the image via file.stream
   img = Image.open(file.stream)
   objectDetectResults = predictImages()
+  return jsonify(objectDetectResults)
+@application.route('/api/v2' , methods=['POST'])
+def upload_apiv2():
+  file = request.files['image']
+  filename = secure_filename(file.filename)
+  print(filename)
+  print(base_path)
+  #file.save('{}/{}'.format(file.name))
+  file.save('{}/{}'.format(base_path,filename))
+  # # Read the image via file.stream
+  img = Image.open(file.stream)
+  character('test.jpg')
+  character('test.jpg')
+  jurisdiction('test.jpg')
+  objectDetectResults = plate(filename)
   return jsonify(objectDetectResults)
 
 
 @application.route('/uploader', methods = ['GET', 'POST'])
 def upload_file():
   if request.method == 'POST':
-    shutil.rmtree("uploadedImages")
-    os.mkdir("uploadedImages")
+    shutil.rmtree("received")
+    os.mkdir("received")
     #f = request.files['file']
     files = request.files.getlist("file[]")
    
@@ -42,7 +61,7 @@ def upload_file():
   
     for f in files:
       #file = request.files.get(f)
-      imageFile = "uploadedImages/" + secure_filename(f.filename)
+      imageFile = "received/" + secure_filename(f.filename)
 
       f.save(imageFile)
     modelArg, labelsArg, imagePathArg, num_classesArg, min_confidenceArg, image_displayArg, pred_stagesArg

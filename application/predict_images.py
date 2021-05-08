@@ -184,9 +184,12 @@ with model.as_default():
 
 #load the session into memory for faster inference
 sess=tf.Session(graph=model)
-
-labelsArg='classes/classes.pbtxt'
-imagePathArg="uploadedImages"
+classes_path=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'classes'))
+image_path=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'received'))
+labelsArg='{}/character_detection.pbtxt'.format(classes_path)
+imagePathArg='{}'.format(image_path)
+print(image_path)
+print(labelsArg)
 num_classesArg=37
 min_confidenceArg=0.10
 image_displayArg=False
@@ -225,6 +228,7 @@ def predictImages():
       # loop over the plate boxes, find the chars inside the plate boxes,
       # and then scrub the chars with 'processPlates', resulting in a list of final plateBoxes, char texts, char boxes, char scores and complete plate scores
       plates = []
+      
 
       for plateBox in plateBoxes_pred:
         boxes, scores, labels = predicter.predictChars(image, plateBox)
@@ -263,9 +267,6 @@ def predictImages():
       cv2.imshow("Labelled Image", imageLabelled)
       cv2.waitKey(0)
 
-
-    print(charBoxes_pred)
-    print(plateBox)
 
  
     imageResults = []

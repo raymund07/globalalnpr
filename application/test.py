@@ -9,18 +9,18 @@ from predict_multiplegraph import jurisdiction
 
 b=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'Inferencegraphs'))
 im = Image.open("{}/2.jpg".format(b))
-a =plate("{}/2.jpg".format(b))
+a =plate("2.jpg")
 print(a)
 
 b=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'Inferencegraphs'))
 im = Image.open("{}/2.jpg".format(b))
-a =character("{}/2.jpg".format(b))
+a =plate("2.jpg")
 print(a)
 
 
 b=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'Inferencegraphs'))
 im = Image.open("{}/2.jpg".format(b))
-a =jurisdiction("{}/2.jpg".format(b))
+a =plate("2.jpg")
 print(a)
 
 
