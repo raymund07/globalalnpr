@@ -42,7 +42,7 @@ def upload_apiv2():
   file.save('{}/{}'.format(base_path,filename))
   # # Read the image via file.stream
   img = Image.open(file.stream)
-  objectDetectResults = plate(filename)
+  objectDetectResults = character(filename)
   return jsonify(objectDetectResults)
 
 
