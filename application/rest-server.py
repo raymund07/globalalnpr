@@ -18,10 +18,12 @@ base_path=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'recei
 
 @application.route('/upload')
 def upload_render():
+
    return render_template('main/template/index-download.html')
 @application.route('/web')
 def upload_web():
    return render_template('webupload.html')
+
 @application.route('/api' , methods=['POST'])
 def upload_api():
   file = request.files['image']
@@ -32,18 +34,26 @@ def upload_api():
   img = Image.open(file.stream)
   objectDetectResults = predictImages()
   return jsonify(objectDetectResults)
+
 @application.route('/api/v2' , methods=['POST'])
+
 def upload_apiv2():
+  charDetectResult=[]
+  objectDetectResults=[]
   file = request.files['image']
   filename = secure_filename(file.filename)
-  print(filename)
-  print(base_path)
-  #file.save('{}/{}'.format(file.name))
   file.save('{}/{}'.format(base_path,filename))
-  # # Read the image via file.stream
-  img = Image.open(file.stream)
-  objectDetectResults = character(filename)
-  return jsonify(objectDetectResults)
+  plateDetectResults = plate(filename)
+  charDetectResults=character('cropped-{}'.format(filename))
+  return jsonify(plateDetectResults,charDetectResults)
+
+@application.route('/api/v2/test' , methods=['POST'])
+def upload_apiv2test():
+  test=request.files
+  test=request.form['model']
+  print(test)
+  return test
+
 
 
 @application.route('/uploader', methods = ['GET', 'POST'])
