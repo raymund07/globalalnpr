@@ -40,50 +40,50 @@ plate_detection_classes = plate_detection_graph.get_tensor_by_name('detection_cl
 plate_num_detections = plate_detection_graph.get_tensor_by_name('num_detections:0')
 # ---------------------------------------------------------------------------- #
 
-# ------------------ character Model Initialization ---------------------------- #
-character_label_map = label_map_util.load_labelmap('{}/character_recognition.pbtxt'.format(classes_path))
-character_categories = label_map_util.convert_label_map_to_categories(character_label_map, max_num_classes=90, use_display_name=True)
-character_category_index = label_map_util.create_category_index(character_categories)
+# # ------------------ character Model Initialization ---------------------------- #
+# character_label_map = label_map_util.load_labelmap('{}/character_recognition.pbtxt'.format(classes_path))
+# character_categories = label_map_util.convert_label_map_to_categories(character_label_map, max_num_classes=90, use_display_name=True)
+# character_category_index = label_map_util.create_category_index(character_categories)
 
-character_detection_graph = tf.Graph()
+# character_detection_graph = tf.Graph()
 
-with character_detection_graph.as_default():
-    character_od_graph_def = tf.GraphDef()
-    with tf.gfile.GFile('{}/character_recognition.pb'.format(inference_path), 'rb') as fid:
-        character_serialized_graph = fid.read()
-        character_od_graph_def.ParseFromString(character_serialized_graph)
-        tf.import_graph_def(character_od_graph_def, name='')
+# with character_detection_graph.as_default():
+#     character_od_graph_def = tf.GraphDef()
+#     with tf.gfile.GFile('{}/character_recognition.pb'.format(inference_path), 'rb') as fid:
+#         character_serialized_graph = fid.read()
+#         character_od_graph_def.ParseFromString(character_serialized_graph)
+#         tf.import_graph_def(character_od_graph_def, name='')
         
-character_session = tf.Session(graph=character_detection_graph)
-print(character_session)
-character_image_tensor = character_detection_graph.get_tensor_by_name( 'image_tensor:0')
-character_detection_boxes = character_detection_graph.get_tensor_by_name( 'detection_boxes:0')
-character_detection_scores = character_detection_graph.get_tensor_by_name('detection_scores:0')
-character_detection_classes = character_detection_graph.get_tensor_by_name( 'detection_classes:0')
-character_num_detections = character_detection_graph.get_tensor_by_name('num_detections:0')
-# ---------------------------------------------------------------------------- #
+# character_session = tf.Session(graph=character_detection_graph)
+# print(character_session)
+# character_image_tensor = character_detection_graph.get_tensor_by_name( 'image_tensor:0')
+# character_detection_boxes = character_detection_graph.get_tensor_by_name( 'detection_boxes:0')
+# character_detection_scores = character_detection_graph.get_tensor_by_name('detection_scores:0')
+# character_detection_classes = character_detection_graph.get_tensor_by_name( 'detection_classes:0')
+# character_num_detections = character_detection_graph.get_tensor_by_name('num_detections:0')
+# # ---------------------------------------------------------------------------- #
 
-# ------------------ Jurisdiction Detection/Localization------------------------------ #
-jurisdiction_label_map = label_map_util.load_labelmap('{}/jurisdiction_recognition.pbtxt'.format(classes_path))
-jurisdiction_categories = label_map_util.convert_label_map_to_categories(jurisdiction_label_map, max_num_classes=90, use_display_name=True)
-jurisdiction_category_index = label_map_util.create_category_index(jurisdiction_categories)
+# # ------------------ Jurisdiction Detection/Localization------------------------------ #
+# jurisdiction_label_map = label_map_util.load_labelmap('{}/jurisdiction_recognition.pbtxt'.format(classes_path))
+# jurisdiction_categories = label_map_util.convert_label_map_to_categories(jurisdiction_label_map, max_num_classes=90, use_display_name=True)
+# jurisdiction_category_index = label_map_util.create_category_index(jurisdiction_categories)
 
-jurisdiction_detection_graph = tf.Graph()
+# jurisdiction_detection_graph = tf.Graph()
 
-with jurisdiction_detection_graph.as_default():
-    jurisdiction_od_graph_def = tf.GraphDef()
-    with tf.gfile.GFile('{}/jurisdiction_recognition.pb'.format(inference_path), 'rb') as fid:
-        jurisdiction_serialized_graph = fid.read()
-        jurisdiction_od_graph_def.ParseFromString(jurisdiction_serialized_graph)
-        tf.import_graph_def(jurisdiction_od_graph_def, name='')
+# with jurisdiction_detection_graph.as_default():
+#     jurisdiction_od_graph_def = tf.GraphDef()
+#     with tf.gfile.GFile('{}/jurisdiction_recognition.pb'.format(inference_path), 'rb') as fid:
+#         jurisdiction_serialized_graph = fid.read()
+#         jurisdiction_od_graph_def.ParseFromString(jurisdiction_serialized_graph)
+#         tf.import_graph_def(jurisdiction_od_graph_def, name='')
         
-jurisdiction_session = tf.Session(graph=jurisdiction_detection_graph)
-print(jurisdiction_session)
-jurisdiction_image_tensor = jurisdiction_detection_graph.get_tensor_by_name( 'image_tensor:0')
-jurisdiction_detection_boxes = jurisdiction_detection_graph.get_tensor_by_name( 'detection_boxes:0')
-jurisdiction_detection_scores = jurisdiction_detection_graph.get_tensor_by_name('detection_scores:0')
-jurisdiction_detection_classes = jurisdiction_detection_graph.get_tensor_by_name( 'detection_classes:0')
-jurisdiction_num_detections = jurisdiction_detection_graph.get_tensor_by_name('num_detections:0')
+# jurisdiction_session = tf.Session(graph=jurisdiction_detection_graph)
+# print(jurisdiction_session)
+# jurisdiction_image_tensor = jurisdiction_detection_graph.get_tensor_by_name( 'image_tensor:0')
+# jurisdiction_detection_boxes = jurisdiction_detection_graph.get_tensor_by_name( 'detection_boxes:0')
+# jurisdiction_detection_scores = jurisdiction_detection_graph.get_tensor_by_name('detection_scores:0')
+# jurisdiction_detection_classes = jurisdiction_detection_graph.get_tensor_by_name( 'detection_classes:0')
+# jurisdiction_num_detections = jurisdiction_detection_graph.get_tensor_by_name('num_detections:0')
 
 
 
