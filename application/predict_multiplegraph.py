@@ -85,7 +85,7 @@ character_num_detections = character_detection_graph.get_tensor_by_name('num_det
 # jurisdiction_detection_scores = jurisdiction_detection_graph.get_tensor_by_name('detection_scores:0')
 # jurisdiction_detection_classes = jurisdiction_detection_graph.get_tensor_by_name( 'detection_classes:0')
 # jurisdiction_num_detections = jurisdiction_detection_graph.get_tensor_by_name('num_detections:0')
-
+top_plates=[]
 
 
 def plate(image_path):
@@ -119,7 +119,7 @@ def plate(image_path):
     for i,platebox in enumerate(boxes):
     #check online if confidence is >.0%
         if(scores[i]>0.60 and character_category_index[classes[i]]['name']=='plate'):
-       
+        
             class_name = character_category_index[classes[i]]['name']
             accuracy=scores[i]
             ymin=round(boxes[i][0]*height)
@@ -148,6 +148,11 @@ def plate(image_path):
 
 
 def character(image_path):
+
+    def additional_plate(a,b):
+        top_plates.append()
+        top_plates.append('{}{}'.format(b))
+
     print('Character Recognition')
     start_time = time.time()
     image = cv2.imread('{}/{}'.format(base_path,image_path))
@@ -163,6 +168,7 @@ def character(image_path):
     classes = np.squeeze(classes).astype(np.int32)
     scores = np.squeeze(scores)
     boxes = np.squeeze(boxes)
+    top_plates=[]
 
     object_name = []
     object_score = []
@@ -172,8 +178,11 @@ def character(image_path):
     charbox=[]
     charbox.append("[ymin, xmin, ymax, ymax]")
     platescore=[]
+    previous_char=''
+    count=0
 
     for i,platebox in enumerate(boxes):
+       
         #check online if confidence is >30%
         if(scores[i]>0.10):
             class_name = character_category_index[classes[i]]['name']
@@ -186,11 +195,12 @@ def character(image_path):
             chars.append(char)
             crop_img = image[ymin:ymax, xmin:xmax]
             cv2.imwrite('{}/cropped-{}'.format(base_path,image_path),crop_img)
- 
+
     
     chars = sorted(chars, key=lambda x: x[3])
     box1StartY, box1StartX, box1EndY, box1EndX=0,0,0,0
-    top_plates=[]
+    previous_index=''
+    plate_index=[]
     for i in range(0,len(chars)):
         (box1StartY, box1StartX, box1EndY, box1EndX) = box1StartY, box1StartX, box1EndY, box1EndX
         (box2StartY, box2StartX, box2EndY, box2EndX) = chars[i][2],chars[i][3],chars[i][4],chars[i][5]
@@ -201,10 +211,10 @@ def character(image_path):
 
         # if the boxes are intersecting, then compute the area of intersection rectangle
         if xB > xA and yB > yA:
-            print('intersection area')
-            print('the index is {}'.format(i))
+  
             interArea = (xB - xA) * (yB - yA)
-            print('intersection area {}'.format(interArea))
+            
+   
         else:
             interArea = 0.0
         
@@ -212,22 +222,43 @@ def character(image_path):
         box2Area = (box2EndY - box2StartY) * (box2EndX - box2StartX)
 
         # compute the intersection area / box1 area
+    
         iou = interArea / float(box1Area + box2Area - interArea)
-        print(iou)
-        platetext='{}{}'.format(platetext,chars[i][0])
-        charbox.append(str(chars[i][2:]))
+        if(iou>=0.8):
+            count=count+1
+            current_index=i
+            
+            print('the current char {} is intersection with {}: iou is {} index {} and {}'.format(previous_char,chars[i][0],iou,previous_index,current_index))
+            top_plates.append('plate{}'.format(i))
+            
+        elif(iou>=0.30 and iou<=0.80):
+            print('overlap')
+         
+        else:
+            platetext='{}{}'.format(platetext,chars[i][0])
+        
+           
+  
+        # platetext='{}{}'.format(platetext,chars[i][0])
+        charbox.append(str(chars[i][0:]))
         platescore.append(str(chars[i][1]*100)[:5])
         (box1StartY, box1StartX, box1EndY, box1EndX)=(box2StartY, box2StartX, box2EndY, box2EndX)
+        previous_char=chars[i][0]
+        previous_index=i
+           
     #list all possible plate combination by detection the minimum intersection area
     
     print(platetext)
+    print(count)
 
     curTime = time.time()
     processingTime = curTime - start_time
+    print(top_plates)
 
     return {"registration":{"processingTime":processingTime,"character":platetext, "accuracy":platescore,"boxes":charbox,"imagename":image_path,'model':'character detection'}}
   
 
+   
 def jurisdiction(image_path):
     print('Jurisdiction Recognition')
 
