@@ -117,7 +117,7 @@ def plate(image_path):
 
 
     for i,platebox in enumerate(boxes):
-    #check online if confidence is >10%
+    #check online if confidence is >.0%
         if(scores[i]>0.60 and character_category_index[classes[i]]['name']=='plate'):
             print(scores[i])
             class_name = character_category_index[classes[i]]['name']
@@ -166,7 +166,7 @@ def character(image_path):
 
     object_name = []
     object_score = []
-
+    ymin,xmin,ymax,xmax=0,0,0,0
     chars=[]
     platetext=''
     charbox=[]
@@ -175,7 +175,7 @@ def character(image_path):
 
     for i,platebox in enumerate(boxes):
         #check online if confidence is >30%
-        if(scores[i]>0.30):
+        if(scores[i]>0.10):
             print(scores[i])
             class_name = character_category_index[classes[i]]['name']
             accuracy=scores[i]
@@ -190,10 +190,38 @@ def character(image_path):
  
     
     chars = sorted(chars, key=lambda x: x[3])
+    box1StartY, box1StartX, box1EndY, box1EndX=0,0,0,0
+    top_plates=[]
     for i in range(0,len(chars)):
+        (box1StartY, box1StartX, box1EndY, box1EndX) = box1StartY, box1StartX, box1EndY, box1EndX
+        (box2StartY, box2StartX, box2EndY, box2EndX) = chars[i][2],chars[i][3],chars[i][4],chars[i][5]
+        xA = max(box2StartX, box1StartX)
+        yA = max(box2StartY, box1StartY)
+        xB = min(box2EndX, box1EndX)
+        yB = min(box2EndY, box1EndY)
+
+        # if the boxes are intersecting, then compute the area of intersection rectangle
+        if xB > xA and yB > yA:
+            print('intersection area')
+            print('the index is {}'.format(i))
+            interArea = (xB - xA) * (yB - yA)
+            print('intersection area {}'.format(interArea))
+        else:
+            interArea = 0.0
+        
+        box1Area = (box1EndY - box1StartY) * (box1EndX - box1StartX)
+        box2Area = (box2EndY - box2StartY) * (box2EndX - box2StartX)
+
+        # compute the intersection area / box1 area
+        iou = interArea / float(box1Area + box2Area - interArea)
+        print(iou)
         platetext='{}{}'.format(platetext,chars[i][0])
         charbox.append(str(chars[i][2:]))
         platescore.append(str(chars[i][1]*100)[:5])
+        (box1StartY, box1StartX, box1EndY, box1EndX)=(box2StartY, box2StartX, box2EndY, box2EndX)
+    #list all possible plate combination by detection the minimum intersection area
+    
+
 
     curTime = time.time()
     processingTime = curTime - start_time
