@@ -119,7 +119,7 @@ def plate(image_path):
     for i,platebox in enumerate(boxes):
     #check online if confidence is >.0%
         if(scores[i]>0.60 and character_category_index[classes[i]]['name']=='plate'):
-            print(scores[i])
+       
             class_name = character_category_index[classes[i]]['name']
             accuracy=scores[i]
             ymin=round(boxes[i][0]*height)
@@ -176,7 +176,6 @@ def character(image_path):
     for i,platebox in enumerate(boxes):
         #check online if confidence is >30%
         if(scores[i]>0.10):
-            print(scores[i])
             class_name = character_category_index[classes[i]]['name']
             accuracy=scores[i]
             ymin=round(boxes[i][0]*height)
@@ -221,7 +220,7 @@ def character(image_path):
         (box1StartY, box1StartX, box1EndY, box1EndX)=(box2StartY, box2StartX, box2EndY, box2EndX)
     #list all possible plate combination by detection the minimum intersection area
     
-
+    print(platetext)
 
     curTime = time.time()
     processingTime = curTime - start_time
