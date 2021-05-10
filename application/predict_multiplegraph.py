@@ -117,8 +117,8 @@ def plate(image_path):
 
 
     for i,platebox in enumerate(boxes):
-    #check online if confidence is >30%
-        if(scores[i]>0.30):
+    #check online if confidence is >10%
+        if(scores[i]>0.60 and character_category_index[classes[i]]['name']=='plate'):
             print(scores[i])
             class_name = character_category_index[classes[i]]['name']
             accuracy=scores[i]
@@ -144,7 +144,7 @@ def plate(image_path):
     processingTime = curTime - start_time
    
 
-    return {"plate":{"processingTime":processingTime,"character":platetext, "accuracy":platescore,"boxes":charbox,"imagename":image_path}}
+    return {"plate":{"processingTime":processingTime,"label":platetext, "accuracy":platescore,"boxes":charbox,"imagename":image_path}}
 
 
 def character(image_path):
@@ -185,6 +185,9 @@ def character(image_path):
             xmax=round(boxes[i][3]*width)
             char=[class_name,scores[i],ymin,xmin,ymax,xmax]
             chars.append(char)
+            crop_img = image[ymin:ymax, xmin:xmax]
+            cv2.imwrite('{}/cropped-{}'.format(base_path,image_path),crop_img)
+ 
     
     chars = sorted(chars, key=lambda x: x[3])
     for i in range(0,len(chars)):

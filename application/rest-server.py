@@ -3,7 +3,7 @@ from werkzeug import secure_filename
 import base64
 import io
 from PIL import Image
-from predict_images import predictImages
+
 from predict_multiplegraph import plate
 from predict_multiplegraph import character
 from predict_multiplegraph import jurisdiction
@@ -38,13 +38,19 @@ def upload_api():
 @application.route('/api/v2' , methods=['POST'])
 
 def upload_apiv2():
-  charDetectResult=[]
+  charDetectResults=[]
   objectDetectResults=[]
   file = request.files['image']
   filename = secure_filename(file.filename)
   file.save('{}/{}'.format(base_path,filename))
   plateDetectResults = plate(filename)
-  charDetectResults=character('cropped-{}'.format(filename))
+  # detect if plate is available and crop to determine characters
+  if(plateDetectResults['plate']['label']=='plate'):
+    print('plate detected')
+    print(plateDetectResults)
+    charDetectResults=character('cropped-{}'.format(filename))
+  else:
+    charDetectResults=character('{}'.format(filename))
   return jsonify(plateDetectResults,charDetectResults)
 
 @application.route('/api/v2/test' , methods=['POST'])
