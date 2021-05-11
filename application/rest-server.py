@@ -46,6 +46,7 @@ def upload_apiv2():
   plateDetectResults = plate(filename)
   # detect if plate is available and crop to determine characters
   if(plateDetectResults['plate']['label']=='plate'):
+
     charDetectResults=character('cropped-{}'.format(filename))
   else:
     charDetectResults=character('{}'.format(filename))

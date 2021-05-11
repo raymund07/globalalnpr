@@ -5,6 +5,7 @@ tf.disable_v2_behavior()
 import sys
 import os
 from PIL import Image
+import itertools
 import time
 import cv2
 from globalhelper.utils import label_map_util
@@ -138,7 +139,7 @@ def plate(image_path):
     chars = sorted(chars, key=lambda x: x[3])
     for i in range(0,len(chars)):
         platetext='{}{}'.format(platetext,chars[i][0])
-        charbox.append(str(chars[i][2:]))
+        charbox.append(str(chars[i]))
         platescore.append(str(chars[i][1]*100)[:5])
     curTime = time.time()
     processingTime = curTime - start_time
@@ -200,7 +201,12 @@ def character(image_path):
     chars = sorted(chars, key=lambda x: x[3])
     box1StartY, box1StartX, box1EndY, box1EndX=0,0,0,0
     previous_index=''
-    plate_index=[]
+    achars=''
+
+    characteroverlapindex=[]
+    characternonoverlapindex=[]
+    characteroverlapindexstring=''
+    
     for i in range(0,len(chars)):
         (box1StartY, box1StartX, box1EndY, box1EndX) = box1StartY, box1StartX, box1EndY, box1EndX
         (box2StartY, box2StartX, box2EndY, box2EndX) = chars[i][2],chars[i][3],chars[i][4],chars[i][5]
@@ -213,7 +219,7 @@ def character(image_path):
         if xB > xA and yB > yA:
   
             interArea = (xB - xA) * (yB - yA)
-            
+             
    
         else:
             interArea = 0.0
@@ -227,18 +233,19 @@ def character(image_path):
         if(iou>=0.8):
             count=count+1
             current_index=i
-            
+            a=top_plates  
             print('the current char {} is intersection with {}: iou is {} index {} and {}'.format(previous_char,chars[i][0],iou,previous_index,current_index))
-            top_plates.append('plate{}'.format(i))
+            characteroverlapindex.append(previous_index)
+            characteroverlapindex.append(i)
             
-        elif(iou>=0.30 and iou<=0.80):
-            print('overlap')
+    
+        platetext='{}{}'.format(platetext,chars[i][0])
          
-        else:
-            platetext='{}{}'.format(platetext,chars[i][0])
-        
+        characternonoverlapindex.append(previous_index)
+        characternonoverlapindex.append(i)
+            
            
-  
+        achars='{}{}'.format(achars,chars[i][0])
         # platetext='{}{}'.format(platetext,chars[i][0])
         charbox.append(str(chars[i][0:]))
         platescore.append(str(chars[i][1]*100)[:5])
@@ -247,15 +254,19 @@ def character(image_path):
         previous_index=i
            
     #list all possible plate combination by detection the minimum intersection area
-    
-    print(platetext)
-    print(count)
 
+    characteroverlapindex=list(set(characteroverlapindex))
+
+
+
+    print(characteroverlapindex)
+    print(characternonoverlapindex)
     curTime = time.time()
     processingTime = curTime - start_time
-    print(top_plates)
+    print(list(top_plates))
 
-    return {"registration":{"processingTime":processingTime,"character":platetext, "accuracy":platescore,"boxes":charbox,"imagename":image_path,'model':'character detection'}}
+
+    return {"registration":{"processingTime":processingTime,"character":platetext, "accuracy":platescore,"boxes":charbox,"imagename":image_path,'model':'character detection','overlap':characteroverlapindex,'non-overlap':characternonoverlapindex}}
   
 
    
