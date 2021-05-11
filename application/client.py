@@ -18,28 +18,25 @@ r = requests.post('http://localhost:5000/api/v2', files=my_img, data={'model':'p
 print(r.text)
 
 
+
 # my_img = {'image': open('{}/6.jpg'.format(b), 'rb')}
 # r = requests.post('http://localhost:5000/api/v2', files=my_img, data={'model':'plate'})
 
+
+# my_img = {'image': open('{}/6.jpg'.format(b), 'rb')}
+# r = requests.post('http://localhost:5000/api/v2', files=my_img, data={'model':'plate'})
+
+# my_img = {'image': open('{}/9.jpg'.format(b), 'rb')}
+# r = requests.post('http://localhost:5000/api/v2', files=my_img, data={'model':'plate'})
+# print(r.text)
 
 import json
 y=json.loads(r.text)
 string=y[1]['registration']['character']
 index=y[1]['registration']['overlap']
-print(y[1]['registration']['character'])
-print(y[1]['registration']['overlap'])
 
-# print(type(index))
-# print(len(index))
-
-# import itertools
-# next_list=list(itertools.product(y[1]['registration']['character'],y[1]['registration']['overlap']))
-# print(next_list)
-
-l ='123459679'
 filter1=index
 filter1.sort()
-filter2=[0,1,6]
 char=[]
 char.append(filter1[0:2])
 for i in range(2,len(filter1)):
@@ -78,60 +75,72 @@ print(res)
 print(len(res))
 plate_registration = y[1]['registration']['character']
 character_index=''
+top_registration=[]
 for i in range(0,len(plate_registration)):
     character_index='{}{}'.format(character_index,i)
 # Index positions
 separator='$/#%'
 print(character_index)
-if len(res)>1:
+testplate=[]
+if len(res)>=2:
     for i in range(0,len(res)):
         list_of_indexes=res[i]
         for j in list_of_indexes:
             character_index = replace_char_at_index(character_index, j, separator[i])
-    character_index=''.join(sorted(set(character_index), key=character_index.index))    
+    character_index=''.join(sorted(set(character_index), key=character_index.index))
+
+
+    for n in res[0]:
+        testplate.append( character_index.replace('$',str(n))) 
+    for n in res[1]:
+        for i in range(0,len(testplate)):
+            top_registration.append(testplate[i].replace('/',str(n)))
+    
+    
     print(character_index)
-    for i in range (0,len(res)):
-        print(character_index.replace(separator[i]))
-        # for n in res[i]:
-        #     print(character_index.replace(separator[i],str(n)))
+
       
 else:   
-    list_of_indexes =res 
+    list_of_indexes =res[0] 
+    print(list)
     # Replace characters at index positions in list
     for j in list_of_indexes:
         character_index = replace_char_at_index(character_index, j, '$')
-    character_index=''.join(sorted(set(character_index), key=character_index.index))   
-    for i in range(0,res):
-        print(i)
-        # for n in res[i]:
-        #     print(n)
-        #     # print(character_index.replace(separator[i],str(n)))
+    character_index=''.join(sorted(set(character_index), key=character_index.index))  
+    print(character_index)
+    for n in list_of_indexes:
+        top_registration.append(character_index.replace('$',str(n)))
+    
+print(top_registration)
+
+def Convert(string):
+    list1=[]
+    list1[:0]=string
+    return list1
+import pandas as pd
+
+def generate_plates(A,B):
+    registration=''
+    print(B.get(0))
+    for i in range(0,len(A)):
+        registration='{}{}'.format(registration,B.get(i))
+    return registration
 
 
+def Convert(string):
+    list1=[]
+    list1[:0]=string
+    return list1
 
-# a = list(filter(None, sample_str.split('/')))
-# # list(set(characteroverlapindex))
 
+t=[]
+for i in range(0,len(top_registration)):
+    A=Convert(top_registration[i])
+    B=(dict(list(enumerate(plate_registration))))
+    z=generate_plates(A,B)
+    t.append(z)
+print(t) 
+print(B)
 
+import pandas as pd
 
-
-# string='gwu$ab/'
-# for n in b[0]:
-#   print(string.replace('$',str(n)))
-# for n in b[1]:
-#   print(string.replace('/',str(n)))
-# for n in b[1]:
-#   print(string.replace('/',str(n)))
-
-# sample_str='012345678'
-# index_string=''
-# for i in range(0,len(sample_str)):
-#     index='{}{}'.format(index,i)
-# print(index)
-
-# list_of_indexes = [4,5,6]
-# # Replace characters at index positions in list
-# for index in list_of_indexes:
-#     sample_str = replace_char_at_index(sample_str, index, '/')
-
-# print(sample_str)
