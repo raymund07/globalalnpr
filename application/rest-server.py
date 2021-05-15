@@ -8,6 +8,7 @@ from PIL import Image
 from inference import Inference
 import shutil
 import os
+from statistics import mean
 import time
 
 application = Flask(__name__)
@@ -46,9 +47,35 @@ def upload_apiv2():
   classes,boxes,scores,height,width,image=list(image_uploded.predict_plate(filename))
   curTime = time.time()
   processingTime = curTime - start_time
-  platetext,platescore,charbox=roi.detect_plate(classes,boxes,scores,height,width,image_path,image)
-  
-  return jsonify({"plate":{"processingTime":processingTime,"label":platetext, "accuracy":platescore,"boxes":charbox,"imagename":image_path}})
+  platelabel,platescore,platebox,crop_image=roi.detect_plate(classes,boxes,scores,height,width,image_path,image)
+  plate_result={"plate":{"platelabel":platelabel, "platescore":platescore,"platebox":platebox,"imagename":image_path}}
+  if (platelabel=='plate'):
+      curTime = time.time()
+      image_cropped=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'received'))
+      classes,boxes,scores,height,width=image_uploded.predict_registration('{}/cropped-{}'.format(image_cropped,image_path))
+      registrationlabel,registrationscore,registrationbox,registrationoverlapindex=roi.detect_registration(classes,boxes,scores,height,width,image_cropped)
+      processingTime = curTime - start_time
+      topregistration=roi.top_registration(registrationoverlapindex,registrationlabel,registrationscore)
+      registration_result={"registration":{"processingTime":processingTime,"registrationlabel":registrationlabel, "registrationscore":registrationscore,"registrationbox":registrationbox,"imagename":image_path,"top_registration":topregistration}}
+  else:
+      classes,boxes,scores,height,width=image_uploded.predict_registration('{}'.format(image_path))
+      registrationlabel,registrationscore,registrationbox,registrationoverlapindex=roi.detect_registration(classes,boxes,scores,height,width,image_path)
+      processingTime = curTime - start_time
+      topregistration=roi.top_registration(registrationoverlapindex,registrationlabel,registrationscore)
+      if(registrationoverlapindex!=[]):
+        registrationlabel=topregistration[0]
+      else:
+        labeltext=registrationlabel
+        registrationscore=list(map(float, registrationscore))
+        if(len(registrationscore)>=1):
+          registrationlabel=[labeltext,round(mean(registrationscore),2)]
+        
+       
+
+      registration_result={"registration":{"processingTime":processingTime,"registrationlabel":registrationlabel, "registrationscore":registrationscore,"registrationbox":registrationbox,"imagename":image_path,"top_registration":topregistration}}
+
+
+  return jsonify(plate_result,registration_result)
 
 
 @application.route('/api/v2/test' , methods=['POST'])

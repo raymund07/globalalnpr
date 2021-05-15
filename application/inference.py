@@ -81,6 +81,7 @@ class Inference:
         
         
     def predict_registration(self,image_path):
+        print(image_path)
         character_label_map = label_map_util.load_labelmap('{}/character_recognition.pbtxt'.format(self.classes_path))
         character_categories = label_map_util.convert_label_map_to_categories(character_label_map, max_num_classes=90, use_display_name=True)
         character_category_index = label_map_util.create_category_index(character_categories)
@@ -100,7 +101,7 @@ class Inference:
         classes = np.squeeze(classes).astype(np.int32)
         scores = np.squeeze(scores)
         boxes = np.squeeze(boxes)
-        return (classes,boxes,scores)
+        return (classes,boxes,scores,height,width)
         
 
     def detect_state(self):
