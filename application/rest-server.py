@@ -1,17 +1,14 @@
+from tools.detector import Detector
 from flask import Flask, render_template, request, jsonify
+from numpy.testing._private.utils import print_assert_equal
 from werkzeug import secure_filename
 import base64
 import io
 from PIL import Image
-
-from predict_multiplegraph import plate
-from predict_multiplegraph import character
-from predict_multiplegraph import jurisdiction
+from inference import Inference
 import shutil
 import os
-import subprocess
-# import tensorflow.compat.v1 as tf
-# tf.disable_v2_behavior()
+import time
 
 application = Flask(__name__)
 base_path=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'received'))
@@ -28,29 +25,31 @@ def upload_web():
 def upload_api():
   file = request.files['image']
   filename = secure_filename(file.filename)
-  #file.save('{}/{}'.format(file.name))
   file.save('{}/{}'.format(base_path,filename))
+
   # # Read the image via file.stream
   img = Image.open(file.stream)
   objectDetectResults = predictImages()
+
   return jsonify(objectDetectResults)
 
 @application.route('/api/v2' , methods=['POST'])
 
 def upload_apiv2():
-  charDetectResults=[]
-  objectDetectResults=[]
+  start_time = time.time()
   file = request.files['image']
   filename = secure_filename(file.filename)
   file.save('{}/{}'.format(base_path,filename))
-  plateDetectResults = plate(filename)
-  # detect if plate is available and crop to determine characters
-  if(plateDetectResults['plate']['label']=='plate'):
+  image_uploded=Inference()
+  roi=Detector(0.30)
+  image_path=filename
+  classes,boxes,scores,height,width,image=list(image_uploded.predict_plate(filename))
+  curTime = time.time()
+  processingTime = curTime - start_time
+  platetext,platescore,charbox=roi.detect_plate(classes,boxes,scores,height,width,image_path,image)
+  
+  return jsonify({"plate":{"processingTime":processingTime,"label":platetext, "accuracy":platescore,"boxes":charbox,"imagename":image_path}})
 
-    charDetectResults=character('cropped-{}'.format(filename))
-  else:
-    charDetectResults=character('{}'.format(filename))
-  return jsonify(plateDetectResults,charDetectResults)
 
 @application.route('/api/v2/test' , methods=['POST'])
 def upload_apiv2test():

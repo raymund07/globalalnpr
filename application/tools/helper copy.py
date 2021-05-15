@@ -1,34 +1,70 @@
-import os
-import requests
-b=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'images'))
-
-# # my_img = {'image': open('{}/2.jpg'.format(b), 'rb')}
-# # r = requests.post('http://localhost:5000/api', files=my_img,data={'model':'character'})
-# # print(r.text)
-
-# for i in os.listdir(b):
+from globalhelper.utils import label_map_util
 
 
-#     my_img = {'image': open('{}/{}'.format(b,i), 'rb')}
-#     r = requests.post('http://localhost:5000/api/v2', files=my_img, data={'model':'character'})
-#     print(r.text)
+class Inference:
+    def __init__(self):
+        a='h'
+        print('hello')
+    
+    def detect_plate(self):
+        print('plate')
+   
+        
+    def detect_char(self):
+        print('char')
+        print(self)
 
-# my_img = {'image': open('{}/7.jpg'.format(b), 'rb')}
-# r = requests.post('http://localhost:5000/api/v2', files=my_img, data={'model':'plate'})
-# print(r.text)
+    def detect_state(self):
+        print('juris')
+
+if __name__ == '__main__':
+    Inference()
+  
+# import numpy as np
+
+# class Helper:
+  
+#   def __init__(self, minConfidence, categoryIdx, charIOUMax=0.3, charPlateIOAMin=0.5, rejectPlates=False, minScore=0.6, minChars=2):
+#     # boxes below minConfidence are rejected
+#     self.minConfidence = minConfidence
+#     # character boxes that do not overlap plate box by at least 'charPlateIOAMin' are rejected
+#     self.charPlateIOAMin = charPlateIOAMin
+#     # character boxes overlapping other char boxes by more than 'charIOUMax' are rejected
+#     self.charIOUMax = charIOUMax
+#     # If 'rejectPlates' is True, then plates with a "complete score" less than minScore,
+#     # or less than 'minChars' characters, or plate boxes that touch the edge of the frame, will be rejected
+#     self.rejectPlates = rejectPlates
+#     self.minScore = minScore
+#     self.minChars = minChars
+#     self.categoryIdx = categoryIdx
+
+#  def intersectionOverUnion(self, , box2):
+#     (box1StartY, box1StartX, box1EndY, box1EndX) = box1
+#     (box2StartY, box2StartX, box2EndY, box2EndX) = box2
+#     # determine the (x, y)-coordinates of the intersection rectangle
+#     xA = max(box2StartX, box1StartX)
+#     yA = max(box2StartY, box1StartY)
+#     xB = min(box2EndX, box1EndX)
+#     yB = min(box2EndY, box1EndY)
+
+#     # if the boxes are intersecting, then compute the area of intersection rectangle
+#     if xB > xA and yB > yA:
+#       interArea = (xB - xA) * (yB - yA)
+#     else:
+#       interArea = 0.0
+
+#     # compute the area of the box1 and box2
+#     box1Area = (box1EndY - box1StartY) * (box1EndX - box1StartX)
+#     box2Area = (box2EndY - box2StartY) * (box2EndX - box2StartX)
+
+#     # compute the intersection area / box1 area
+#     iou = interArea / float(box1Area + box2Area - interArea)
+
+#     # return the intersection over area value
+#     return iou
 
 
-
-my_img = {'image': open('{}/p3.jpg'.format(b), 'rb')}
-r = requests.post('http://localhost:5000/api/v2', files=my_img, data={'model':'plate'})
-print(r.text)
-
-# my_img = {'image': open('{}/7.jpg'.format(b), 'rb')}
-# r = requests.post('http://localhost:5000/api/v2', files=my_img, data={'model':'plate'})
-
-
-
-# import json
+#   import json
 # y=json.loads(r.text)
 # string=y[1]['registration']['character']
 # index=y[1]['registration']['overlap']
@@ -37,7 +73,6 @@ print(r.text)
 # filter1.sort()
 # char=[]
 # char.append(filter1[0:2])
-
 # for i in range(2,len(filter1)):
 #     if(filter1[i-1]+1==filter1[i]):
 #         if(filter1[i-1]!=char[0][-1:][0]):
@@ -121,8 +156,8 @@ print(r.text)
 # def generate_plates(A,B):
 #     registration=''
 #     print(B.get(0))
-#     for n in A:
-#         registration='{}{}'.format(registration,B.get(int(n)))
+#     for i in range(0,len(A)):
+#         registration='{}{}'.format(registration,B.get(i))
 #     return registration
 
 
