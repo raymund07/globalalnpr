@@ -38,9 +38,9 @@ confidence.
 
 Initial Requirement:
 Training Models: 
-- [] Plate Localization 
+- [X] Plate Localization 
 - [] Character Localization - For data preparation
-- [] Character Detection
+- [X] Character Detection
 - [] Jurisdiction (Object Detection) - Unique Symbols
 - [] Jurisdiction (Classifier)
 - [] State Classification ( Standard Issue, Veterans, Etc)
@@ -50,11 +50,10 @@ Training Models:
 Deployment
 - [X] Create RESTful API ( single Model)
 - [X] Create RESTful API ( multiple Model) 
-- [] Create Client App for testing
-- [] Dockerize Application 
-- [] Connect Tensorflow Serving
+- [X] Create Client App for testing
+- [X] Dockerize Application 
 - [] Create Docker Compose
-- [] Build Container and Push to dockerhub
+- [X] Build Container and Push to dockerhub
 - [] Connect Azure App Service for production 
 
 Helper and Utilities
@@ -92,8 +91,6 @@ image=.
 
 curl -i -X POST -F model=plate  -F "image=@1.jpg" http://localhost:5000/apiv2
 
-docker run -it -d -p 5000:5000  -v C:\Users\Isaac\global\tensorflow-anpr\inferencegraphs:/inferencegraphs -v C:\Users\Isaac\global\tensorflow-anpr\classes:/classes -v C:\Users\Isaac\global\tensorflow-anpr\received:/received raymund07/alnpr
-
-
+docker run -it -d -p 5000:5000 raymund07/alnpr
 
 docker build -t raymund07/alnpr .
