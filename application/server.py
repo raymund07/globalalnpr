@@ -22,18 +22,6 @@ def upload_render():
 def upload_web():
    return render_template('webupload.html')
 
-@application.route('/api' , methods=['POST'])
-def upload_api():
-  file = request.files['image']
-  filename = secure_filename(file.filename)
-  file.save('{}/{}'.format(base_path,filename))
-
-  # # Read the image via file.stream
-  img = Image.open(file.stream)
-  objectDetectResults = predictImages()
-
-  return jsonify(objectDetectResults)
-
 @application.route('/api/v2' , methods=['POST'])
 
 def upload_apiv2():
@@ -56,21 +44,26 @@ def upload_apiv2():
       registrationlabel,registrationscore,registrationbox,registrationoverlapindex=roi.detect_registration(classes,boxes,scores,height,width,image_cropped)
       processingTime = curTime - start_time
       topregistration=roi.top_registration(registrationoverlapindex,registrationlabel,registrationscore)
+      if(topregistration==[]):
+        labeltext=registrationlabel
+        registrationscore=list(map(float, registrationscore))
+        if(len(registrationscore)>=1):
+          registrationlabel=[labeltext,round(mean(registrationscore),2)]
+      else:
+        registrationlabel=topregistration[0]
       registration_result={"registration":{"processingTime":processingTime,"registrationlabel":registrationlabel, "registrationscore":registrationscore,"registrationbox":registrationbox,"imagename":image_path,"top_registration":topregistration}}
   else:
       classes,boxes,scores,height,width=image_uploded.predict_registration('{}'.format(image_path))
       registrationlabel,registrationscore,registrationbox,registrationoverlapindex=roi.detect_registration(classes,boxes,scores,height,width,image_path)
       processingTime = curTime - start_time
       topregistration=roi.top_registration(registrationoverlapindex,registrationlabel,registrationscore)
-      if(registrationoverlapindex!=[]):
-        registrationlabel=topregistration[0]
-      else:
+      if(topregistration==[]):
         labeltext=registrationlabel
         registrationscore=list(map(float, registrationscore))
         if(len(registrationscore)>=1):
           registrationlabel=[labeltext,round(mean(registrationscore),2)]
-        
-       
+      else:
+        registrationlabel=topregistration[0]
 
       registration_result={"registration":{"processingTime":processingTime,"registrationlabel":registrationlabel, "registrationscore":registrationscore,"registrationbox":registrationbox,"imagename":image_path,"top_registration":topregistration}}
 
@@ -78,12 +71,6 @@ def upload_apiv2():
   return jsonify(plate_result,registration_result)
 
 
-@application.route('/api/v2/test' , methods=['POST'])
-def upload_apiv2test():
-  test=request.files
-  test=request.form['model']
-  print(test)
-  return test
 
 
 
@@ -102,13 +89,12 @@ def upload_file():
       imageFile = "received/" + secure_filename(f.filename)
 
       f.save(imageFile)
-    modelArg, labelsArg, imagePathArg, num_classesArg, min_confidenceArg, image_displayArg, pred_stagesArg
-    
+
     objectDetectResults = predictImages ()
     return jsonify(objectDetectResults)
 
 
 if __name__ == '__main__':
-   application.run(port=5000,debug = True)
+   application.run(host='0.0.0.0',port=5000,debug = True)
 
 

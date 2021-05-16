@@ -1,0 +1,16 @@
+README.md 
+alnpr
+alnpr.code-workspace
+annotations
+configuration
+datasets
+host.json
+images
+local.settings.json
+package.json
+proxies.json
+training
+uploads
+dockerfile
+docker-compose.yml
+.git

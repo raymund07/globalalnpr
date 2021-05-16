@@ -49,7 +49,7 @@ Training Models:
 
 Deployment
 - [X] Create RESTful API ( single Model)
-- [] Create RESTful API ( multiple Model) 
+- [X] Create RESTful API ( multiple Model) 
 - [] Create Client App for testing
 - [] Dockerize Application 
 - [] Connect Tensorflow Serving
@@ -64,7 +64,36 @@ Helper and Utilities
 - Automate Data Preparation 
 - Data Annotation
 
+Sample Output
+{
+  "accuracy": [
+    "97.41",
+    "94.28",
+    "95.88",
+    "66.87",
+    "99.87",
+    "96.92"
+  ],
+  "boxes": [
+    "[ymin, xmin, ymax, ymax]",
+    "[93, 32, 201, 91]",
+    "[91, 158, 196, 213]",
+    "[88, 206, 196, 267]",
+    "[86, 272, 192, 339]",
+    "[85, 337, 189, 393]",
+    "[83, 394, 191, 452]"
+  ],
+  "character": "vadthe",
+  "imagename": "tl-horizontal_main.jpg",
+  "model": "character detection",
+  "processingTime": 0.19191694259643555
+}
+image=.
 
-- Testing: Sample Web API
+curl -i -X POST -F model=plate  -F "image=@1.jpg" http://localhost:5000/apiv2
+
+docker run -it -d -p 5000:5000  -v C:\Users\Isaac\global\tensorflow-anpr\inferencegraphs:/inferencegraphs -v C:\Users\Isaac\global\tensorflow-anpr\classes:/classes -v C:\Users\Isaac\global\tensorflow-anpr\received:/received raymund07/alnpr
 
 
+
+docker build -t raymund07/alnpr .

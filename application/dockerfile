@@ -1,10 +1,23 @@
-FROM python:3.8.1
+
+
+FROM python:3.8
+
+RUN mkdir -p /inferencegraphs
+RUN mkdir -p /received
+RUN mkdir -p /images
+RUN mkdir -p /classes
+# RUN apt-get update 
+# RUN apt-get install ffmpeg libsm6 libxext6  -y
+
+COPY classes /classes
+
 
 ADD . /application
 WORKDIR ./application
 
-RUN pip install --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt
-    
+# RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
 
-ENTRYPOINT ["flask", "run"]
+EXPOSE 5000
+    
+CMD ["python","server.py"]
+
