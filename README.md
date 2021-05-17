@@ -63,6 +63,10 @@ Helper and Utilities
 - Automate Data Preparation 
 - Data Annotation
 
+
+
+HOW TO INSTALL
+`
 Sample Output
 {
   "accuracy": [
@@ -87,6 +91,7 @@ Sample Output
   "model": "character detection",
   "processingTime": 0.19191694259643555
 }
+`
 image=.
 
 curl -i -X POST -F model=plate  -F "image=@1.jpg" http://localhost:5000/apiv2
