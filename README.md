@@ -82,7 +82,7 @@ confidence.
 
 
 ### Let us see some result 
-When you run \
+You can test the initial models intalled hosted in the image. Test via local installation or via remote server. See example below \
 **Local Environment** \
 `curl -i -X POST -F model=plate  -F "image=@1.jpg" http://localhost:5000/apiv2 ` \
 **Remote Testing - Azure App Service** \
