@@ -1,7 +1,8 @@
+# Global Agility Solutions - Automatic License Plate Reader
 The purpose of this engagement is to develop an ALPR (Automated License Plate Reader) solution that is
 proprietary to and owned by Global Agility Solutions. The functionality of the ALPR software should be
 developed per the specifications below.
-General Specifications:
+## General Specifications:
 ● The ALPR solutions should be developed utilizing common machine learning algorithms using
 transfer learning or similar to establish models for inference.
 ● The ALPR solution should provide the following functionality
@@ -36,8 +37,8 @@ review of the solution and need.
 ● ALPR engine should be able to return x results based on requested input descending on
 confidence.
 
-Initial Requirement:
-Training Models: 
+## Initial Requirement:
+### Training Models: 
 - [X] Plate Localization 
 - [] Character Localization - For data preparation
 - [X] Character Recognition
@@ -47,7 +48,7 @@ Training Models:
 - [] Stacked Characters (Character Recognition) - Additional Training
 - [] Us Teritories and Other Countries (Character Recognition)- Additional Training 
 
-Deployment
+### Deployment
 - [X] Create RESTful API ( single Model)
 - [X] Create RESTful API ( multiple Model) 
 - [X] Create Client App for testing
@@ -56,16 +57,16 @@ Deployment
 - [X] Build Container and Push to dockerhub
 - [x] Connect Azure App Service for production 
 
-Helper and Utilities
-- Annotation and Data Validation ( for data preprocessing)
-- [in progress ]Data Augmentation ( for Data preprocesing)
-- Create Simple Documentation on how to connect via API
-- Automate Data Preparation 
-- Data Annotation
+### Helper and Utilities
+- [] Annotation and Data Validation ( for data preprocessing)
+- [] [in progress ]Data Augmentation ( for Data preprocesing)
+- [] Create Simple Documentation on how to connect via API
+- [] Automate Data Preparation 
+- [] Data Annotation
 
 
 
-HOW TO INSTALL
+## HOW TO INSTALL
 `
 Sample Output
 {
