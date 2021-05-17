@@ -1,0 +1,219 @@
+//Project: AliveTracker v4.0
+//Filename: tracking_ini_tmpl.js
+//Author: Dustin Yu
+//Date: 9/30/2016
+//Description: Template file with variables to be replaced via Node.
+
+var global_trackingConfigJSON 	= '{"triggers":[{"proactive_id":1253,"url_patterns":"/design/background/","user_agent_string":"","pageid":540,"delay":0,"pagesvisited":0,"proactive_router_type":"acd","proactive_type":"image","proactive_window_websiteid":869,"proactive_app":"alivechat","proactive_department_id_select":7829,"pages":[{"id":540,"groupid":6397,"name":"Background Only","url":"http://www.myplates.com/BackgroundOnly","sub_pageid":0,"realid":540}]},{"proactive_id":1253,"url_patterns":"/Cart","user_agent_string":"","pageid":544,"delay":15,"pagesvisited":0,"proactive_router_type":"acd","proactive_type":"image","proactive_window_websiteid":869,"proactive_app":"alivechat","proactive_department_id_select":7829,"pages":[{"id":544,"groupid":6397,"name":"Cart","url":"https://www.myplates.com/cart.aspx","sub_pageid":0,"realid":544}]},{"proactive_id":1253,"url_patterns":"/discontinued-plates","user_agent_string":"","pageid":553,"delay":15,"pagesvisited":0,"proactive_router_type":"acd","proactive_type":"image","proactive_window_websiteid":869,"proactive_app":"alivechat","proactive_department_id_select":7829,"pages":[{"id":553,"groupid":6397,"name":"Discontinued","url":"http://www.myplates.com/features/discontinued","sub_pageid":0,"realid":553}]},{"proactive_id":1253,"url_patterns":"/design/personalized/","user_agent_string":"","pageid":539,"delay":30,"pagesvisited":0,"proactive_router_type":"acd","proactive_type":"image","proactive_window_websiteid":869,"proactive_app":"alivechat","proactive_department_id_select":7829,"pages":[{"id":539,"groupid":6397,"name":"7 Letter Personalize","url":"http://www.myplates.com/7LetterPersonalized","sub_pageid":0,"realid":539}]},{"proactive_id":1253,"url_patterns":"/cart/owner^/cart/customer^/cart/terms^/checkout^","user_agent_string":"","pageid":545,"delay":45,"pagesvisited":0,"proactive_router_type":"acd","proactive_type":"image","proactive_window_websiteid":869,"proactive_app":"alivechat","proactive_department_id_select":7829,"pages":[{"id":545,"groupid":6397,"name":"Checkout","url":"https://www.myplates.com/checkout.aspx","sub_pageid":0,"realid":545}]},{"proactive_id":1253,"url_patterns":"/isa","user_agent_string":"","pageid":548,"delay":60,"pagesvisited":0,"proactive_router_type":"acd","proactive_type":"image","proactive_window_websiteid":869,"proactive_app":"alivechat","proactive_department_id_select":7829,"pages":[{"id":548,"groupid":6397,"name":"ISA (disabled)","url":"http://www.myplates.com/disabled.aspx","sub_pageid":0,"realid":548}]},{"proactive_id":1253,"url_patterns":"/comingsoon^/register/","user_agent_string":"","pageid":549,"delay":60,"pagesvisited":0,"proactive_router_type":"acd","proactive_type":"image","proactive_window_websiteid":869,"proactive_app":"alivechat","proactive_department_id_select":7829,"pages":[{"id":549,"groupid":6397,"name":"Coming Soon","url":"http://www.myplates.com/comingsoon","sub_pageid":0,"realid":549}]},{"proactive_id":1253,"url_patterns":"/gr8pl8s","user_agent_string":"","pageid":543,"delay":60,"pagesvisited":0,"proactive_router_type":"acd","proactive_type":"image","proactive_window_websiteid":869,"proactive_app":"alivechat","proactive_department_id_select":7829,"pages":[{"id":543,"groupid":6397,"name":"GR8PL8s","url":"http://www.myplates.com/gr8pl8s","sub_pageid":0,"realid":543}]},{"proactive_id":1253,"url_patterns":"/layaway","user_agent_string":"","pageid":550,"delay":60,"pagesvisited":0,"proactive_router_type":"acd","proactive_type":"image","proactive_window_websiteid":869,"proactive_app":"alivechat","proactive_department_id_select":7829,"pages":[{"id":550,"groupid":6397,"name":"Layaway","url":"http://www.myplates.com/layaway","sub_pageid":0,"realid":550},{"id":551,"groupid":6397,"name":"Layaway","url":"http://www.myplates.com/Layaway/How","sub_pageid":550,"realid":550},{"id":552,"groupid":6397,"name":"Layaway","url":"http://www.myplates.com/Layaway/Setup","sub_pageid":550,"realid":550},{"id":554,"groupid":6397,"name":"Layaway","url":"http://www.myplates.com/Layaway/Terms","sub_pageid":550,"realid":550}]},{"proactive_id":1253,"url_patterns":"https://www.myplates.com","user_agent_string":"","pageid":533,"delay":90,"pagesvisited":0,"proactive_router_type":"acd","proactive_type":"image","proactive_window_websiteid":869,"proactive_app":"alivechat","proactive_department_id_select":7829,"pages":[{"id":533,"groupid":6397,"name":"Home Page","url":"https://myplates.com/","sub_pageid":0,"realid":533},{"id":534,"groupid":6397,"name":"Home Page","url":"http://myplates.com/","sub_pageid":533,"realid":533},{"id":541,"groupid":6397,"name":"Home Page","url":"http://www.myplates.com/","sub_pageid":533,"realid":533}]},{"proactive_id":1253,"url_patterns":"/pricing","user_agent_string":"","pageid":535,"delay":120,"pagesvisited":0,"proactive_router_type":"acd","proactive_type":"image","proactive_window_websiteid":869,"proactive_app":"alivechat","proactive_department_id_select":7829,"pages":[{"id":535,"groupid":6397,"name":"Pricing","url":"http://www.myplates.com/options.aspx","sub_pageid":0,"realid":535}]},{"proactive_id":1253,"url_patterns":"/faqs","user_agent_string":"","pageid":546,"delay":120,"pagesvisited":0,"proactive_router_type":"acd","proactive_type":"image","proactive_window_websiteid":869,"proactive_app":"alivechat","proactive_department_id_select":7829,"pages":[{"id":546,"groupid":6397,"name":"FAQ","url":"http://www.myplates.com/faq.aspx","sub_pageid":0,"realid":546}]},{"proactive_id":1253,"url_patterns":"/auction","user_agent_string":"","pageid":547,"delay":300,"pagesvisited":0,"proactive_router_type":"acd","proactive_type":"image","proactive_window_websiteid":869,"proactive_app":"alivechat","proactive_department_id_select":7829,"pages":[{"id":547,"groupid":6397,"name":"Auction","url":"http://www.myplates.com/Auction","sub_pageid":0,"realid":547}]}],"customization":{"embed_alivechat_enabled":1,"embed_alivedial_enabled":0,"embed_image":"https://images.websitealive.com/images/hosted/upload/2020-12-09_1607541973221_vkfxvgjhmi.png","embed_image_alert":"https://images.websitealive.com/images/hosted/upload/2020-12-09_1607541973221_vkfxvgjhmi.png","embed_image_close_window":"https://images.websitealive.com/images/hosted/default/tab_bar_close_350.png","dock_appearance_mobile":"alivechat","sms_phone_number":"","image_dock_mobile":"https://images.websitealive.com/images/hosted/upload/2020-12-09_1607541973221_vkfxvgjhmi.png","sms_message":"I have a question about your services","visitor_timeout":1800,"enable_tracking":"N","embed_appearance":"Y","embed_dockoropen":"tab","embed_position":"right","embed_icon_position_top":0,"embed_icon_position_leftright":10,"embed_department_id":7829,"window_top":0,"window_leftright":10,"window_width":348,"window_height":400,"window_border_size":1,"window_border_color":"214,214,214","window_shadow":"N","window_slideout":"N","window_icon_close_top":0,"window_icon_close_leftright":0,"window_transparent":"N"}}';
+
+//Local and Parameter Variables 
+
+var objectref = 'c1';
+var groupid   = '6397';
+var websiteid = '869';
+
+
+var visitor_window_url = 'https://c1.websitealive.com/';
+
+var wsa_custom_str		    = '^^^^';
+var survey_ids			    = '';
+var survey_values		    = '';
+
+//Pass in variables
+
+//var loginname		        = '';
+var loginname		        = '';
+
+
+
+
+var loginemail		        = '';
+var loginphone		        = '';
+var loginquestion	        = '';
+
+//hibu only
+if ('c1' == 'c1' && '6397' == '6330'){
+    loginname		        = '';
+    loginquestion           = '';   //remove as they hardcoded it
+}
+
+//Document referer, location, title.
+
+var rf = document.referrer.toString();
+var dl = document.location.toString();
+var dt = document.title.toString();
+
+//var global_login_variables = '&loginname=&loginemail=&loginphone=&loginquestion=&survey_ids=&survey_values='; 
+var global_login_variables = '&loginname=' + encodeURIComponent(loginname) + '&loginemail=&loginphone=&loginquestion=' + encodeURIComponent(loginquestion) + '&survey_ids=&survey_values=&dl=' + encodeURIComponent(dl); 
+
+
+//Declare Global Variables.
+			
+var global_is_triggered 						= false;
+var global_trigger_proactive_id 				= '';
+var global_trigger_proactive_window_websiteid 	= 0;
+var global_trigger_department_id_select 		= 0;
+var global_trigger_delay 						= 0;
+var global_trigger_proactive_type				= '';
+var global_trigger_app							= '';
+var global_trigger_auto_start_chat 				= '';
+var global_trigger_router_type 					= '';
+var global_trigger_open_in_dock 				= '';
+var global_trigger_operator_id                  = '';
+
+var global_session_pages_visited 				= 0;
+
+var global_logged_in 							= '';
+var global_ipdeny_lsm							= '';
+
+var global_alive_guid                           = '';
+
+//URLs
+var global_base_url = (("https:" == document.location.protocol) ? "https://" : "http://") + 'tracking-v3.websitealive.com';
+
+var global_api_url = global_base_url + '/api/1.0/'
+var global_api_params = '?objectref=c1&groupid=6397&websiteid=869';
+
+
+//embed tracking js
+
+var js = document.createElement('script'); 
+js.type = 'text/javascript';
+
+var enable_ada = false; //for jetspring, false, for all, use true
+
+if (
+    ('c1' == 'dev0') ||       //dev0
+
+    ('c1' == 'c1' && '6397' == '20523') ||      //webaim
+    ('c1' == 'c1' && '6397' == '8128') ||       //vacollege
+    ('c1' == 'c1' && '6397' == '8552') ||       //southu
+    ('c1' == 'c1' && '6397' == '10468') ||      //brightwoodcollege
+    ('c1' == 'c1' && '6397' == '8127') ||       //brightwoodpa
+    ('c1' == 'c1' && '6397' == '10123') ||      //golfacademy
+    ('c1' == 'c1' && '6397' == '9137') ||       //louisville
+    ('c1' == 'c1' && '6397' == '12108') ||      //americanart
+    ('c1' == 'c1' && '6397' == '3608') ||       //herzing
+    ('c1' == 'c1' && '6397' == '1738') ||       //faulkner
+    ('c1' == 'c1' && '6397' == '6457') ||       //calpoly
+    ('c1' == 'c1' && '6397' == '3117') ||       //calbaptist
+    ('c1' == 'c1' && '6397' == '8250') ||       //paralegal
+    ('c1' == 'c1' && '6397' == '6980') ||       //creighton
+    ('c1' == 'c1' && '6397' == '3974') ||       //currycollege
+    ('c1' == 'c1' && '6397' == '4829') ||       //dartmouth
+    ('c1' == 'c1' && '6397' == '8545') ||       //jstraining
+    ('c1' == 'c1' && '6397' == '8551') ||       //lasell
+    ('c1' == 'c1' && '6397' == '12096') ||      //necollege
+    ('c1' == 'c1' && '6397' == '7982') ||       //olivet
+    ('c1' == 'c1' && '6397' == '7790') ||       //quinnipiac
+    ('c1' == 'c1' && '6397' == '8122') ||       //sdchristian
+    ('c1' == 'c1' && '6397' == '8574') ||       //tennessee
+    ('c1' == 'c1' && '6397' == '9591') ||       //edisonu
+    ('c1' == 'c1' && '6397' == '3118') ||       //Trevecca
+    ('c1' == 'c1' && '6397' == '8550') ||       //villanova
+    ('c1' == 'c1' && '6397' == '9777') ||       //chicagoschool
+    ('c1' == 'c1' && '6397' == '8275') ||       //colmountain
+    ('c1' == 'c1' && '6397' == '12342') ||       //saybrook
+
+    ('c1' == 'a1' && '6397' == '8516') ||       //bridgeport
+    ('c1' == 'a3' && '6397' == '1782') ||       //ati
+    ('c1' == 'a5' && '6397' == '1728') ||       //americancareercollege
+    
+    ('c1' == 'wsa3' && '6397' == '11523') ||       //averett
+    ('c1' == 'wsa3' && '6397' == '11878') ||       //gwynedd
+    ('c1' == 'wsa3' && '6397' == '13754') ||       //culinary
+    ('c1' == 'wsa3' && '6397' == '12078') ||       //loyolau
+    ('c1' == 'wsa3' && '6397' == '13218') ||       //ntttraining
+    
+    ('c1' == 'wsa5' && '6397' == '6773') ||       //ecpicollege
+    //('c1' == 'wsa5' && '6397' == '5229') ||       //lafilm
+    ('c1' == 'wsa5' && '6397' == '6771') ||       //snhu
+    ('c1' == 'a5' && '6397' == '345') ||       //loews hotel
+
+    ('c1' == 'jc1' && '6397' == '9') ||    //jetspring
+    ('c1' == 'wsa3' && '6397' == '9') ||     //WEBSITEALIVE
+
+    ('c1' == 'c1' && '6397' == '18599') ||    //MIZZOU
+    ('c1' == 'c1' && '6397' == '22994') ||    //LOYOLA LMU
+    ('c1' == 'c1' && '6397' == '22890') ||    //Flashpoint
+    ('c1' == 'c1' && '6397' == '22931') ||    //Portland Athletics
+
+    ('c1' == 'c1' && '6397' == '22927') ||    //collegesoflaw
+    ('c1' == 'c1' && '6397' == '23146') ||    //beckfield
+    
+    ('c1' == 'wsa5' && '6397' == '5229') ||   //lafilm
+    
+    ('c1' == 'c1' && '6397' == '9827') ||    //salesmichele
+
+    ('c1' == 'c1' && '6397' == '12549') ||    //pacificoaks
+
+    ('c1' == 'c1' && '6397' == '23384') ||    //https://www.dni.edu/ dallas nursing institute
+
+    ('c1' == 'c1' && '6397' == '23371') ||    //artinstitutes
+
+    ('c1' == 'c1' && '6397' == '16532') ||    //cityu
+
+    
+
+    ('c1' == 'ellucian')    //all ellucian servers    
+
+    ){
+
+    enable_ada = true;
+}
+
+if (enable_ada){
+
+    if (('c1' == 'wsa3' && '6397' == '9') || ('c1' == 'ellucian')){
+        js.src = global_base_url + '/js/tracking_v4_ada.js';
+    }else{
+        js.src = global_base_url + '/js/v4_ada.min.js';
+    }
+
+    if ('c1' == 'c1' && '6397' == '9827'){
+        js.src = 'https://ideas.websitealive.com/alive5/tracking_v4.3.js';
+    }
+
+    //mizzou
+    if ('c1' == 'c1' && '6397' == '18599'){
+        js.src = global_base_url + '/js/tracking_v4.1_ada.js'; 
+    }
+
+    // //umassonline
+    // if ('c1' == 'c1' && '6397' == '23209'){
+    //     js.src = global_base_url + '/js/v4_ada.0.min.js'; 
+    // }
+
+}else{
+
+    // if (
+    //     'c1' == 'wsa9' || 
+    //     'c1' == 'dev0' || 
+    //     'c1' == 'dev1' || 
+    //     'c1' == 'a0' || 
+    //     'c1' == 'tds' || 
+    //     'c1' == 'wsa3' || 
+    //     'c1' == 'c1' || 
+    //     ('c1' == 'c1' && '6397' == '13353') || 
+    //     ('c1' == 'c1' && '6397' == '13670') || 
+    //     ('c1' == 'c1' && '6397' == '6527') || //ncaa
+    //     
+    // ){
+    //     js.src = global_base_url + '/js/tracking_v4.2.min.js';
+    // }else{
+    //     js.src = global_base_url + '/js/tracking_v4.min.js?v=1.4';
+    // }
+    //js.src = global_base_url + '/js/tracking_v4.2.min.js';
+
+
+
+
+    //timberwolveschat
+    if ('c1' == 'wsa9' && '6397' == '2099'){
+        js.src = global_base_url + '/js/tracking_v4.3.js';
+    }else{
+        js.src = global_base_url + '/js/tracking_v4.2.min.js';
+    }
+}
+
+document.getElementsByTagName('head')[0].appendChild(js);

@@ -1,0 +1,5 @@
+﻿(function($){'use strict';TxDMV.Lpot.MyPlates.Web.Data.LicensePlateRepository=function(applicationController){var sourceKey='LicensePlateTable';var sourceUrl='/api/plates';var _data;function loadAsync(){if(localStorage&&parseInt(localStorage.getItem(sourceKey+'Time'))>new Date().getTime()){var deferred=$.Deferred();return deferred.resolve(localStorage.getItem(sourceKey)).then(function(data){_data=JSON.parse(data);});}else{return applicationController.ajaxGet(sourceUrl).then(function(data){if(localStorage){var timeKeyValue=new Date(new Date().getTime()+(1*(1*15*60*1000))).getTime().toString();localStorage.setItem(sourceKey,JSON.stringify(data));localStorage.setItem(sourceKey+'Time',timeKeyValue);}
+_data=data;});}}
+function get(familyId,vehicleTypeId){for(var i=0;i<_data.length;i++){var currentPlate=_data[i];if(currentPlate.familyID==familyId&&currentPlate.vehicleTypeID==vehicleTypeId){return currentPlate;}}}
+function getAll(){return data;}
+return{loadAsync:loadAsync,get:get,getAll:getAll};};}(jQuery));

@@ -1,0 +1,8 @@
+﻿(function($){'use strict';TxDMV.Lpot.MyPlates.Web.Views.SearchController=function(applicationController){var options;var $me;var $input;var $form;var _term='';function bind(bindOptions){options=bindOptions;setReferences();addHandlers();if(options.term.length>0){_term=options.term;$input.val(options.term);$input.trigger('input');$input.focus();$input.blur();}}
+function setReferences(){$me=options.$container;$input=$me.find('#plate-design-search');$form=$me.find('form');}
+function addHandlers(){addInputHandling();addFormSubmitSupression();}
+function addInputHandling(){var onChange=function(){_term=$input.val().trim();if(options.onChange)options.onChange(_term);};$input.on('input',onChange);}
+function addFormSubmitSupression(){var onSubmit=function(){return false;};$form.on('submit',onSubmit);}
+function clear(){$input.val('').trigger('input');$input.blur();}
+function getTerm(){return _term;}
+return{bind:bind,clear:clear,getTerm:getTerm};};}(jQuery));

@@ -1,0 +1,3 @@
+﻿(function(){'use strict';function getCapUrl(plateSeoName,plateMessage){if(plateMessage){return'/design/personalized/passenger/'+plateSeoName+'/'+plateMessage;}else{return'/design/background/passenger/'+plateSeoName;}}
+function getLicensePlateUrl(vehicleType,plateSeoName,plateMessage){if(plateMessage){return'/licenseplate/passenger/'+plateSeoName+'/'+plateMessage;}else{return'/licenseplate/passenger/'+plateSeoName;}}
+TxDMV.Lpot.MyPlates.Web.Services.pageUrlService={getCapUrl:getCapUrl};}());

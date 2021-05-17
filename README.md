@@ -90,9 +90,9 @@ Sample Output
 }
 image=.
 
-curl -i -X POST -F model=plate  -F "image=@1.jpg" http://localhost:5000/apiv2
+curl -i -X POST -F model=plate  -F "image=@images/p3.jpg" https://globalalnpr.azurewebsites.net/api/v2
 
-docker run -it -d -p 5000:5000  -v C:\Users\Isaac\global\tensorflow-anpr\inferencegraphs:/inferencegraphs -v C:\Users\Isaac\global\tensorflow-anpr\classes:/classes -v C:\Users\Isaac\global\tensorflow-anpr\received:/received raymund07/alnpr
+docker run -it -d -p 5000:5000 raymund07/alnpr
 
 
 

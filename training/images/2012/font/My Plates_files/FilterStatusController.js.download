@@ -1,0 +1,12 @@
+﻿(function($){'use strict';TxDMV.Lpot.MyPlates.Web.Views.FilterStatusController=function(applicationController){var options;var $me;var $list;function bind(bindOptions){options=bindOptions;setReferences();addHandlers();}
+function setReferences(){$me=options.$container;$list=$me.find('.active-filters-list');}
+function addHandlers(){addClearAllHandling();addButtonHandling();}
+function addButtonHandling(){var onClick=function($target){var isSearchButton=$target.hasClass('name-search');if(isSearchButton){if(options.onClearSearch)options.onClearSearch();}
+else{if(options.onRemoveAttribute)options.onRemoveAttribute($target.attr('data-attributeId'));}};applicationController.on($list,'click','button',onClick);}
+function addClearAllHandling(){var onClick=function(){var filterButtons=$list.find('button').toArray();if(filterButtons.length===0)return;var lastButtonIndex=filterButtons.length-1;for(var i=0,len=filterButtons.length;i<len;i++){var $button=$(filterButtons[i]);$button.click();}
+$me.find('#clearFiltersButton').blur();};applicationController.on($me,'click','#clearFiltersButton',onClick);}
+function updateAttribute(data){var add=function(){var $item=$('<button class="clear-filter-button" data-attributeId="'+data.attributeId+'">'+data.name+' </button>');var items=$list.find('> *').toArray();for(var i=0,len=items.length;i<len;i++){var $comparisonItem=$(items[i]);if(data.name<$comparisonItem.text()){$item.insertBefore($comparisonItem);drawAttention($item);return;}}
+$list.append($item);drawAttention($item);};var remove=function(){$list.find('[data-attributeId="'+data.attributeId+'"]').remove();};var drawAttention=function($item){$item.addClass('attention');setTimeout(function(){$item.removeClass('attention');},250);};var action=(data.isSelected)?add:remove;action();}
+function updateSearch(term){var removeButton=function($button){$button.remove();showActiveAttributes(true);};var addButton=function(){var $button=$('<button class="clear-filter-button name-search"></button>');$list.prepend($button);showActiveAttributes(false);return $button;};var showActiveAttributes=function(shouldShow){var action=(shouldShow)?'show':'hide';$list.find('button:not(.name-search)')[action]();};var $button=$list.find('.name-search');if(term.length===0){removeButton($button);return;}
+if($button.length===0)$button=addButton();$button.text('Searching: "'+term+'"');}
+return{bind:bind,updateAttribute:updateAttribute,updateSearch:updateSearch};};}(jQuery));

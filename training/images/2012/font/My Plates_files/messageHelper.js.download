@@ -1,0 +1,10 @@
+﻿(function(){'use strict';var _allowedSpecialCharacters=[' ','&','*','-','.','@'];var _allowedSpecialCharacterCodes=[32,38,42,45,46,64];function isAllowedSpecialCharacter(code){return(_allowedSpecialCharacterCodes.indexOf(code)>-1);}
+function isLetter(code){if(code>=65&&code<=90)return true;if(code>=97&&code<=122)return true;return false;}
+function isNumber(code){if(code>=48&&code<=57)return true;}
+function isEnter(code){return(code===13);}
+function getByteCount(message){return message.length;}
+function getCharacterLength(message){var stringHelper=TxDMV.Lpot.MyPlates.Web.Services.stringHelper;_allowedSpecialCharacters.forEach(function(character){message=stringHelper.replaceAll(message,character,'');});return message.length;}
+function onKeypress(event,options,onSubmitClick){var code=event.which;if(isEnter(code)){event.preventDefault();onSubmitClick();return;}
+if(options.messageByteCount<options.plateMaxByteCount){if((isLetter(code)||isNumber(code))&&options.messageCharacterLength<options.plateMaxCharacterLength)return;if(isAllowedSpecialCharacter(code))return;}
+event.preventDefault();}
+TxDMV.Lpot.MyPlates.Web.Services.messageHelper={allowedSpecialCharacters:_allowedSpecialCharacters,allowedSpecialCharacterCodes:_allowedSpecialCharacterCodes,isAllowedSpecialCharacter:isAllowedSpecialCharacter,isLetter:isLetter,isNumber:isNumber,isEnter:isEnter,getByteCount:getByteCount,getCharacterLength:getCharacterLength,onKeypress:onKeypress};}());
