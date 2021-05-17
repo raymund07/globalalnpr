@@ -2,14 +2,14 @@
 The purpose of this engagement is to develop an ALPR (Automated License Plate Reader) solution that is
 proprietary to and owned by Global Agility Solutions. The functionality of the ALPR software should be
 developed per the specifications below.
-## General Specifications:
+## General Specifications: 
 ● The ALPR solutions should be developed utilizing common machine learning algorithms using
-transfer learning or similar to establish models for inference.
-● The ALPR solution should provide the following functionality
-o Registration recognition (characters representing the license plate number)
-o Confidence level at the character level (one confidence score per character)
-o Character recognition should include stacked characters
-o Jurisdiction recognition to include
+transfer learning or similar to establish models for inference. /
+● The ALPR solution should provide the following functionality /
+* Registration recognition (characters representing the license plate number) /
+* Confidence level at the character level (one confidence score per character) /
+* Character recognition should include stacked characters /
+* Jurisdiction recognition to include /
 ▪ All 50 US states
 ▪ Common US territories
 ▪ Mexico
