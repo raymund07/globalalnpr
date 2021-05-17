@@ -1,7 +1,8 @@
+# Global Agility Solutions - Automatic License Plate Reader
 The purpose of this engagement is to develop an ALPR (Automated License Plate Reader) solution that is
 proprietary to and owned by Global Agility Solutions. The functionality of the ALPR software should be
 developed per the specifications below.
-General Specifications:
+## General Specifications:
 ● The ALPR solutions should be developed utilizing common machine learning algorithms using
 transfer learning or similar to establish models for inference.
 ● The ALPR solution should provide the following functionality
@@ -36,34 +37,62 @@ review of the solution and need.
 ● ALPR engine should be able to return x results based on requested input descending on
 confidence.
 
-Initial Requirement:
-Training Models: 
-- [] Plate Localization 
+## Initial Requirement:
+### Training Models: 
+- [X] Plate Localization 
 - [] Character Localization - For data preparation
-- [] Character Detection
+- [X] Character Recognition
 - [] Jurisdiction (Object Detection) - Unique Symbols
 - [] Jurisdiction (Classifier)
 - [] State Classification ( Standard Issue, Veterans, Etc)
 - [] Stacked Characters (Character Recognition) - Additional Training
 - [] Us Teritories and Other Countries (Character Recognition)- Additional Training 
 
-Deployment
+### Deployment
 - [X] Create RESTful API ( single Model)
 - [X] Create RESTful API ( multiple Model) 
-- [] Create Client App for testing
-- [] Dockerize Application 
-- [] Connect Tensorflow Serving
-- [] Create Docker Compose
-- [] Build Container and Push to dockerhub
-- [] Connect Azure App Service for production 
+- [X] Create Client App for testing
+- [X] Dockerize Application 
+- [] Create Docker Compose NGINX,WSGI,Flask( for Production )
+- [X] Build Container and Push to dockerhub
+- [x] Connect Azure App Service for production 
 
-Helper and Utilities
-- Annotation and Data Validation ( for data preprocessing)
-- Data Augmentation ( for Data preprocesing)
-- Create Simple Documentation on how to connect via API
-- Automate Data Preparation 
-- Data Annotation
+### Helper and Utilities
+- [] Annotation and Data Validation ( for data preprocessing)
+- [] [in progress ]Data Augmentation ( for Data preprocesing)
+- [] Create Simple Documentation on how to connect via API
+- [] Automate Data Preparation 
+- [] Data Annotation
 
+
+
+## HOW TO INSTALL 
+
+### Installation via Docker
+`
+# Download the TensorFlow Serving Docker image and repo
+docker pull tensorflow/serving
+
+git clone https://github.com/tensorflow/serving
+# Location of demo models
+TESTDATA="$(pwd)/serving/tensorflow_serving/servables/tensorflow/testdata"
+
+# Start TensorFlow Serving container and open the REST API port
+docker run -t --rm -p 8501:8501 \
+    -v "$TESTDATA/saved_model_half_plus_two_cpu:/models/half_plus_two" \
+    -e MODEL_NAME=half_plus_two \
+    tensorflow/serving &
+
+# Query the model using the predict API
+curl -d '{"instances": [1.0, 2.0, 5.0]}' \
+    -X POST http://localhost:8501/v1/models/half_plus_two:predict
+
+# Returns => { "predictions": [2.5, 3.0, 4.5] }
+`
+
+
+### Cloning The R
+`
 Sample Output
 {
   "accuracy": [
@@ -88,12 +117,16 @@ Sample Output
   "model": "character detection",
   "processingTime": 0.19191694259643555
 }
+`
 image=.
 
 curl -i -X POST -F model=plate  -F "image=@images/p3.jpg" https://globalalnpr.azurewebsites.net/api/v2
 
 docker run -it -d -p 5000:5000 raymund07/alnpr
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> febd03484721b49f0896de5202e151d74043e28c
 
 docker build -t raymund07/alnpr .
