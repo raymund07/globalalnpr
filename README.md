@@ -52,13 +52,13 @@ Deployment
 - [X] Create RESTful API ( multiple Model) 
 - [X] Create Client App for testing
 - [X] Dockerize Application 
-- [] Create Docker Compose
+- [] Create Docker Compose NGINX,WSGI,Flask( for Production )
 - [X] Build Container and Push to dockerhub
-- [] Connect Azure App Service for production 
+- [x] Connect Azure App Service for production 
 
 Helper and Utilities
 - Annotation and Data Validation ( for data preprocessing)
-- Data Augmentation ( for Data preprocesing)
+- [in progress ]Data Augmentation ( for Data preprocesing)
 - Create Simple Documentation on how to connect via API
 - Automate Data Preparation 
 - Data Annotation
