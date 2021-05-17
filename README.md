@@ -88,7 +88,7 @@ When you run \
 **Remote Testing - Azure App Service** \
 `curl -i -X POST -F model=plate  -F "image=@images/p3.jpg" https://globalalnpr.azurewebsites.net/api/v2` 
 
-![Result](https://raw.githubusercontent.com/raymund07/globalalnpr/master/application/sample/test.JPG?token=ABOGSGCN2HU43QZS55HIMHDAUHR5Q)
+![Result](https://github.com/raymund07/globalalnpr/blob/master/application/sample/test.JPG)
 
 
 
