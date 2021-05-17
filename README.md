@@ -40,7 +40,7 @@ Initial Requirement:
 Training Models: 
 - [X] Plate Localization 
 - [] Character Localization - For data preparation
-- [X] Character Detection
+- [X] Character Recognition
 - [] Jurisdiction (Object Detection) - Unique Symbols
 - [] Jurisdiction (Classifier)
 - [] State Classification ( Standard Issue, Veterans, Etc)
