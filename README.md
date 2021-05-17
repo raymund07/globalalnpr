@@ -70,7 +70,7 @@ confidence.
 
 ### Installation via Docker
 
-1. git clone https://github.com/raymund07/globalalnpr.git && cd alnpr 
+1. git clone https://github.com/raymund07/globalalnpr.git && cd globalalnpr 
 2. docker build -t alnpr .
 3. docker run -it -d -p 5000:5000 alnpr
 
