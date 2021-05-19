@@ -2,14 +2,14 @@
 The purpose of this engagement is to develop an ALPR (Automated License Plate Reader) solution that is
 proprietary to and owned by Global Agility Solutions. The functionality of the ALPR software should be
 developed per the specifications below.
-## General Specifications:
+## General Specifications: 
 ● The ALPR solutions should be developed utilizing common machine learning algorithms using
-transfer learning or similar to establish models for inference.
-● The ALPR solution should provide the following functionality
-o Registration recognition (characters representing the license plate number)
-o Confidence level at the character level (one confidence score per character)
-o Character recognition should include stacked characters
-o Jurisdiction recognition to include
+transfer learning or similar to establish models for inference. /
+● The ALPR solution should provide the following functionality /
+* Registration recognition (characters representing the license plate number) /
+* Confidence level at the character level (one confidence score per character) /
+* Character recognition should include stacked characters /
+* Jurisdiction recognition to include /
 ▪ All 50 US states
 ▪ Common US territories
 ▪ Mexico
@@ -69,64 +69,26 @@ confidence.
 ## HOW TO INSTALL 
 
 ### Installation via Docker
-`
-# Download the TensorFlow Serving Docker image and repo
-docker pull tensorflow/serving
 
-git clone https://github.com/tensorflow/serving
-# Location of demo models
-TESTDATA="$(pwd)/serving/tensorflow_serving/servables/tensorflow/testdata"
+1. git clone https://github.com/raymund07/globalalnpr.git && cd globalalnpr 
+2. docker build -t alnpr .
+3. docker run -it -d -p 5000:5000 alnpr
 
-# Start TensorFlow Serving container and open the REST API port
-docker run -t --rm -p 8501:8501 \
-    -v "$TESTDATA/saved_model_half_plus_two_cpu:/models/half_plus_two" \
-    -e MODEL_NAME=half_plus_two \
-    tensorflow/serving &
+### Pulling the image from dockerhub
 
-# Query the model using the predict API
-curl -d '{"instances": [1.0, 2.0, 5.0]}' \
-    -X POST http://localhost:8501/v1/models/half_plus_two:predict
-
-# Returns => { "predictions": [2.5, 3.0, 4.5] }
-`
+1. docker pull raymund07/alnpr
+2. docker run -it -d -p 5000:5000 alnpr
 
 
-### Cloning The R
-`
-Sample Output
-{
-  "accuracy": [
-    "97.41",
-    "94.28",
-    "95.88",
-    "66.87",
-    "99.87",
-    "96.92"
-  ],
-  "boxes": [
-    "[ymin, xmin, ymax, ymax]",
-    "[93, 32, 201, 91]",
-    "[91, 158, 196, 213]",
-    "[88, 206, 196, 267]",
-    "[86, 272, 192, 339]",
-    "[85, 337, 189, 393]",
-    "[83, 394, 191, 452]"
-  ],
-  "character": "vadthe",
-  "imagename": "tl-horizontal_main.jpg",
-  "model": "character detection",
-  "processingTime": 0.19191694259643555
-}
-`
-image=.
 
-curl -i -X POST -F model=plate  -F "image=@images/p3.jpg" https://globalalnpr.azurewebsites.net/api/v2
+### Let us see some result 
+You can test the initial models intalled hosted in the image. Test via local installation or via remote server. Result includes plate location, characters detection and top 10 registration with confidence level See example below \
+**Local Environment** \
+`curl -i -X POST -F model=plate  -F "image=@1.jpg" http://localhost:5000/api/v2 ` \
+**Remote Testing - Azure App Service** \
+`curl -i -X POST -F model=plate  -F "image=@images/p3.jpg" https://globalalnpr.azurewebsites.net/api/v2` 
 
-docker run -it -d -p 5000:5000 raymund07/alnpr
-<<<<<<< HEAD
+![Result](https://github.com/raymund07/globalalnpr/blob/master/application/sample/test.JPG)
 
 
-=======
->>>>>>> febd03484721b49f0896de5202e151d74043e28c
 
-docker build -t raymund07/alnpr .
