@@ -1,9 +1,0 @@
-﻿(function($){'use strict';function on($container,eventName,selector,eventHandler){$container.off(eventName,selector).on(eventName,selector,function(e){try{eventHandler($(this),e);}
-catch(error){console.log(error);}});}
-function ajaxGet(url,onSuccess,onFail){var get=function(){var parms={type:'GET',url:url,crossDomain:true,cache:false,dataType:'json'};return $.ajax(parms);};if(!url){var emptyDeferred=$.Deferred();emptyDeferred.resolve();return emptyDeferred.promise();}
-if(!onSuccess&&!onFail){var deferred=$.Deferred();get(url).fail(function(arg1,arg2,arg3){deferred.reject(arg1,arg2,arg3);}).done(function(data){deferred.resolve(unpackageData(data));});return deferred.promise();}
-if(onSuccess&&!onFail)onFail=function(arg1,arg2,arg3){deferred.reject(arg1,arg2,arg3);};get(url).fail(onFail).done(onSuccess);}
-function whenDone(arrayOfPromises,onDone){for(var i=0,len=arrayOfPromises.length;i<len;i++){if(typeof arrayOfPromises[i]=='string')arrayOfPromises[i]=ajaxGet(arrayOfPromises[i]);}
-return $.when.apply($,arrayOfPromises).fail(function(arg1,arg2,arg3){console.log(arg1,arg2,arg3);}).done(onDone);}
-function unpackageData(data){if(!data)return data;if(data.length!==3)return data;if(data[1]!=='success')return data;if(typeof data[2].then!=='function')return data;return data[0];}
-TxDMV.Lpot.MyPlates.Web.Services.applicationController={on:on,ajaxGet:ajaxGet,whenDone:whenDone};}(jQuery));

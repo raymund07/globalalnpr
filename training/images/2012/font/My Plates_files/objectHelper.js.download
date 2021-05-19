@@ -1,3 +1,0 @@
-﻿(function(){'use strict';function convertToArray(obj){var list=[];for(var propertyName in obj){if(obj.hasOwnProperty(propertyName)){list.push(obj[propertyName]);}}
-return list;}
-TxDMV.Lpot.MyPlates.Web.Services.objectHelper={convertToArray:convertToArray};}());

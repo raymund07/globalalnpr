@@ -1,5 +1,0 @@
-﻿(function($){'use strict';TxDMV.Lpot.MyPlates.Web.Services.CharacterSvgService=function(applicationController){var sourceUrl='/images/cap/sprite.svg';var _characterSprite;function loadAsync(){var deferred=$.Deferred();$.ajax({url:sourceUrl,dataType:'html'}).fail(function(arg1,arg2,arg3){deferred.reject(arg1,arg2,arg3);}).done(function(data){deferred.resolve(unpackageData(data));});return deferred.promise();}
-function unpackageData(data){_characterSprite=Snap.parse(data);}
-function getCharacterSvg(character){var characterID=getCharacterID(character);return _characterSprite.select(characterID).clone().attr({'id':''});}
-function getCharacterID(character){var result;switch(character.toLowerCase()){case'&':result='star';break;case'-':result='dash';break;case'.':result='period';break;case'*':result='tx';break;case'@':result='heart';break;case' ':result='space';break;default:result=character.toLowerCase();};return'#char-'+result;}
-return{loadAsync:loadAsync,getCharacterSvg:getCharacterSvg};};}(jQuery));

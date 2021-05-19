@@ -1,2 +1,0 @@
-﻿(function(){'use strict';function getSync(){return[{id:1,name:"Passenger",seoName:"passenger",sortOrder:1},{id:2,name:"Motorcycle",seoName:"motorcycle",sortOrder:2},{id:3,name:"Trailer",seoName:"trailer",sortOrder:4},{id:4,name:"Private Bus",seoName:"private-bus",sortOrder:3},];}
-TxDMV.Lpot.MyPlates.Web.Data.vehicleTypesMock={getSync:getSync};}());
