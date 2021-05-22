@@ -40,7 +40,7 @@ confidence.
 ## Initial Requirement:
 ### Training Models: 
 - [X] Plate Localization 
-- [] Character Localization - For data preparation
+- [X] Character Localization - For data preparation
 - [X] Character Recognition
 - [] Jurisdiction (Object Detection) - Unique Symbols
 - [] Jurisdiction (Classifier)
@@ -58,8 +58,8 @@ confidence.
 - [x] Connect Azure App Service for production 
 
 ### Helper and Utilities
-- [] Annotation and Data Validation ( for data preprocessing)
-- [] [in progress ]Data Augmentation ( for Data preprocesing)
+- [x] Annotation and Data Validation ( for data preprocessing)
+- [x] [in progress ]Data Augmentation ( for Data preprocesing)
 - [] Create Simple Documentation on how to connect via API
 - [] Automate Data Preparation 
 - [] Data Annotation
