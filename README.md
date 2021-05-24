@@ -38,7 +38,7 @@ review of the solution and need.
 confidence.
 
 ## Initial Requirement:
-### Training Models: 
+### Training Models: 3/13
 * [X] Plate Localization 
 * [X] Character Localization and Recognition:
   * [X] Florida,Texas,California ( Current Series )
@@ -53,7 +53,7 @@ confidence.
 - [] Stacked Characters (Character Recognition) - Additional Training
 - [] Us Teritories and Other Countries (Character Recognition)- Additional Training 
 
-### Deployment  7 / 10
+### Deployment  6 / 7
 - [X] Create RESTful API ( single Model)
 - [X] Create RESTful API ( multiple Model) 
 - [X] Create Client App for testing
