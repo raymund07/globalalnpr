@@ -39,15 +39,14 @@ confidence.
 
 ## Initial Requirement:
 ### Training Models: 
-- [X] Plate Localization 
-- [X] Character Localization and Recognition 
---------[X] Florida,Texas,California ( Current Series )
-        [] Illinois, Maryland, Massachusetts
-        []Michigan, Missouri, North Carolina,
-        []New Jersey, New York, Ohio, 
-        []Ontario, Pennsylvania, Quebec, 
-        []Virginia, Washington, Wisconsin.
-- [X] Character Recognition
+* [X] Plate Localization 
+* [X] Character Localization and Recognition:
+  * [X] Florida,Texas,California ( Current Series )
+  * [] Illinois, Maryland, Massachusetts
+  * []Michigan, Missouri, North Carolina
+  * []New Jersey, New York, Ohio
+  * []Ontario, Pennsylvania, Quebec
+  * []Virginia, Washington, Wisconsin.
 - [] Jurisdiction (Object Detection) - Unique Symbols
 - [] Jurisdiction (Classifier)
 - [] State Classification ( Standard Issue, Veterans, Etc)
