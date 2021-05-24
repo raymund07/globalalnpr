@@ -53,7 +53,7 @@ confidence.
 - [] Stacked Characters (Character Recognition) - Additional Training
 - [] Us Teritories and Other Countries (Character Recognition)- Additional Training 
 
-### Deployment
+### Deployment  7 / 10
 - [X] Create RESTful API ( single Model)
 - [X] Create RESTful API ( multiple Model) 
 - [X] Create Client App for testing
@@ -62,9 +62,9 @@ confidence.
 - [X] Build Container and Push to dockerhub
 - [x] Connect Azure App Service for production 
 
-### Helper and Utilities
+### Helper and Utilities 5/5
 - [x] Annotation and Data Validation ( for data preprocessing)
-- [x] [in progress ]Data Augmentation ( for Data preprocesing)
+- [x] Data Augmentation ( for Data preprocesing)
 - [X] Create Simple Documentation on how to connect via API
 - [X] Automate Data Preparation 
 - [X] Data Annotation
