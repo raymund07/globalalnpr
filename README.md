@@ -40,7 +40,13 @@ confidence.
 ## Initial Requirement:
 ### Training Models: 
 - [X] Plate Localization 
-- [X] Character Localization - For data preparation
+- [X] Character Localization and Recognition 
+--------[X] Florida,Texas,California ( Current Series )
+        [] Illinois, Maryland, Massachusetts
+        []Michigan, Missouri, North Carolina,
+        []New Jersey, New York, Ohio, 
+        []Ontario, Pennsylvania, Quebec, 
+        []Virginia, Washington, Wisconsin.
 - [X] Character Recognition
 - [] Jurisdiction (Object Detection) - Unique Symbols
 - [] Jurisdiction (Classifier)
@@ -60,9 +66,9 @@ confidence.
 ### Helper and Utilities
 - [x] Annotation and Data Validation ( for data preprocessing)
 - [x] [in progress ]Data Augmentation ( for Data preprocesing)
-- [] Create Simple Documentation on how to connect via API
-- [] Automate Data Preparation 
-- [] Data Annotation
+- [X] Create Simple Documentation on how to connect via API
+- [X] Automate Data Preparation 
+- [X] Data Annotation
 
 
 
