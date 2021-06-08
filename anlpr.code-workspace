@@ -2,6 +2,15 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "..\\training_demo"
+		},
+		{
+			"path": "F:\\training"
+		},
+		{
+			"path": "..\\gradientalnpr"
 		}
 	],
 	"settings": {

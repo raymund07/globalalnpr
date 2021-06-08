@@ -1,30 +1,42 @@
 import os
 import requests
+import json
 b=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'images'))
+
 c=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'training/images/texas'))
 
-# # my_img = {'image': open('{}/2.jpg'.format(b), 'rb')}
-# # r = requests.post('http://localhost:5000/api', files=my_img,data={'model':'character'})
-# # print(r.text)
+# my_img = {'image': open('{}/2.jpg'.format(b), 'rb')}
+# r = requests.post('http://localhost:5000/api/v2', files=my_img,data={'model':'character'})
+# print(r.text)
 
 
-# for i in os.listdir(b):
+for i in os.listdir('F:/global/2019-04-02/2019-04-02-05-48-00_43-3964'):
 
 
-#     my_img = {'image': open('{}/{}'.format(b,i), 'rb')}
-#     r = requests.post('https://globalalnpr.azurewebsites.net/api/v2', files=my_img, data={'model':'character'})
-#     print(r.text)
+    my_img = {'image': open('F:/global/2019-04-02/2019-04-02-05-48-00_43-3964/{}'.format(i), 'rb')}
+    r = requests.post('http://localhost:5000/api/v2', files=my_img, data={'model':'character'})
+    print(r.text)
+    # y=json.loads(r.text)
+    # print(y)
+    # string=y[1]['registration']['character']
+    # index=y[1]['registration']['overlap']
+  
 
 
 
 
-my_img = {'image': open('{}/p3.jpg'.format(b), 'rb')}
-r = requests.post('https://globalalnpr.azurewebsites.net/api/v2', files=my_img, data={'model':'plate'})
-print(r.text)
 
-# my_img = {'image': open('{}/7.jpg'.format(b), 'rb')}
-# r = requests.post('http://localhost:6828/api/v2', files=my_img, data={'model':'plate'})
+# my_img = {'image': open('{}/p3.jpg'.format(b), 'rb')}
+# r = requests.post('https://globalalnpr.azurewebsites.net/api/v2', files=my_img, data={'model':'plate'})
+# print(r.text)
 
+# my_img = {'image': open('{}/7.JPG'.format(b), 'rb')}
+# r = requests.post('http://localhost:5000/api/v2', files=my_img, data={'model':'plate'})
+# print(r.text)
+# import cv2
+
+s=r'C:\Users\Isaac\global\tensorflow-anpr\received/cropped-0_1.jpg'
+cv2.imread(r(string))
 
 
 # import json

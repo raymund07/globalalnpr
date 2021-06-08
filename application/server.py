@@ -32,6 +32,7 @@ def upload_apiv2():
   image_uploded=Inference()
   roi=Detector(0.30)
   image_path=filename
+  print(image_path)
   classes,boxes,scores,height,width,image=list(image_uploded.predict_plate(filename))
   curTime = time.time()
   processingTime = curTime - start_time
@@ -95,6 +96,8 @@ def upload_file():
 
 
 if __name__ == '__main__':
-   application.run(host='0.0.0.0',port=5000,debug = True)
+  # application.run(host='0.0.0.0',port=5000,debug = True)
+   application.run(port=5000,debug = True)
+
 
 

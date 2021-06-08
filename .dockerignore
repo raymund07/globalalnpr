@@ -11,6 +11,4 @@ package.json
 proxies.json
 training
 uploads
-dockerfile
-docker-compose.yml
 .git
