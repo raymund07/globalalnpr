@@ -38,17 +38,22 @@ review of the solution and need.
 confidence.
 
 ## Initial Requirement:
-### Training Models: 
-- [X] Plate Localization 
-- [] Character Localization - For data preparation
-- [X] Character Recognition
+### Training Models: 3/13
+* [X] Plate Localization 
+* [X] Character Localization and Recognition:
+  * [X] Florida,Texas,California ( Current Series )
+  * [] Illinois, Maryland, Massachusetts
+  * []Michigan, Missouri, North Carolina
+  * []New Jersey, New York, Ohio
+  * []Ontario, Pennsylvania, Quebec
+  * []Virginia, Washington, Wisconsin.
 - [] Jurisdiction (Object Detection) - Unique Symbols
 - [] Jurisdiction (Classifier)
 - [] State Classification ( Standard Issue, Veterans, Etc)
 - [] Stacked Characters (Character Recognition) - Additional Training
 - [] Us Teritories and Other Countries (Character Recognition)- Additional Training 
 
-### Deployment
+### Deployment  6 / 7
 - [X] Create RESTful API ( single Model)
 - [X] Create RESTful API ( multiple Model) 
 - [X] Create Client App for testing
@@ -57,12 +62,12 @@ confidence.
 - [X] Build Container and Push to dockerhub
 - [x] Connect Azure App Service for production 
 
-### Helper and Utilities
-- [] Annotation and Data Validation ( for data preprocessing)
-- [] [in progress ]Data Augmentation ( for Data preprocesing)
-- [] Create Simple Documentation on how to connect via API
-- [] Automate Data Preparation 
-- [] Data Annotation
+### Helper and Utilities 5/5
+- [x] Annotation and Data Validation ( for data preprocessing)
+- [x] Data Augmentation ( for Data preprocesing)
+- [X] Create Simple Documentation on how to connect via API
+- [X] Automate Data Preparation 
+- [X] Data Annotation
 
 
 
