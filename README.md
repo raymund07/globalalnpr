@@ -47,7 +47,15 @@ confidence.
   * []New Jersey, New York, Ohio
   * []Ontario, Pennsylvania, Quebec
   * []Virginia, Washington, Wisconsin.
-- [] Jurisdiction (Object Detection) - Unique Symbols
+* [] Jurisdiction (Object Detection) - Unique Symbols
+  * [X] California, Florida, Texas, Lousiana
+  * [] AZ, NY, GA, CT, OH
+  * [] VA, OK, CO, IN , NJ
+  * [] MO, MD, AL, PA, NV
+  * [] NC, SC, WI, WA, TN 
+  * [] OR, AR, MI , UT, MN, IA, KS
+  * [] MA, MS, RI, ID, NM, ND
+  * []-KY, NH, NE, MT, ME, WV, SD, DE, CT HI, WY , AK 
 - [] Jurisdiction (Classifier)
 - [] State Classification ( Standard Issue, Veterans, Etc)
 - [] Stacked Characters (Character Recognition) - Additional Training
