@@ -5,17 +5,20 @@ b=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'images'))
 
 c=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'training/images/texas'))
 
-# my_img = {'image': open('{}/2.jpg'.format(b), 'rb')}
-# r = requests.post('http://localhost:5000/api/v2', files=my_img,data={'model':'character'})
-# print(r.text)
+
+
+my_img = {'image': open('{}/2.jpg'.format(b), 'rb'),'model':'plate'}
+
+r = requests.post('http://localhost:5000/api/v2',files=my_img,  data={'confidence':.80})
+
 
 
 for i in os.listdir('F:/global/2019-04-02/2019-04-02-05-48-00_43-3964'):
 
 
-    my_img = {'image': open('F:/global/2019-04-02/2019-04-02-05-48-00_43-3964/{}'.format(i), 'rb')}
-    r = requests.post('http://localhost:5000/api/v2', files=my_img, data={'model':'character'})
-    print(r.text)
+    my_img = {'image': open('F:/global/2019-04-02/2019-04-02-05-48-00_43-3964/{}'.format(i), 'rb'),}
+    r = requests.post('http://localhost:5000/api/v2', files=my_img, data={'confidence':.50})
+
     # y=json.loads(r.text)
     # print(y)
     # string=y[1]['registration']['character']
@@ -35,8 +38,8 @@ for i in os.listdir('F:/global/2019-04-02/2019-04-02-05-48-00_43-3964'):
 # print(r.text)
 # import cv2
 
-s=r'C:\Users\Isaac\global\tensorflow-anpr\received/cropped-0_1.jpg'
-cv2.imread(r(string))
+# s=r'C:\Users\Isaac\global\tensorflow-anpr\received/cropped-0_1.jpg'
+# cv2.imread(r(string))
 
 
 # import json

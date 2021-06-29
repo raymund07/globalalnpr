@@ -1,18 +1,13 @@
 from tools.detector import Detector
 from flask import Flask, render_template, request, jsonify
 from numpy.testing._private.utils import print_assert_equal
-from werkzeug.utils import secure_filename
+from werkzeug import secure_filename
 import base64
 import io
 from PIL import Image
 from inference import Inference
 import shutil
 import os
-from flask import Flask, Response
-from gevent.pywsgi import WSGIServer
-from gevent import monkey
-
-
 from statistics import mean
 import time
 import os
@@ -34,26 +29,6 @@ def test():
    
    print(a,b)
    return 'hello'
-@application.route('/plate')
-def plate():
-    start_time = time.time()
-    file = request.files['image']
-    
-    confidence=request.form['confidence']
-    version=request.form['version']
-
-    filename = secure_filename(file.filename)
-    file.save('{}/{}'.format(base_path,filename))
-    image_uploded=Inference()
-    roi=Detector(float(confidence))
-    image_path=filename
-    classes,boxes,scores,height,width,image=list(image_uploded.predict_plate(filename))
-    curTime = time.time()
-    processingTime = curTime - start_time
-    platelabel,platescore,platebox,crop_image=roi.detect_plate(classes,boxes,scores,height,width,image_path,image)
-    plate_result={"plate":{"platelabel":platelabel, "platescore":platescore,"platebox":platebox,"imagename":image_path},"processing_time":processingTime}
-    return jsonify(plate_result)
-
 @application.route('/api/v2' , methods=['POST'])
 
 def upload_apiv2():
@@ -61,7 +36,6 @@ def upload_apiv2():
   file = request.files['image']
   
   confidence=request.form['confidence']
-  version=request.form['version']
 
   filename = secure_filename(file.filename)
   file.save('{}/{}'.format(base_path,filename))
@@ -105,7 +79,6 @@ def upload_apiv2():
   os.remove('{}/{}'.format(base_path,filename))
   os.remove('{}/cropped-{}'.format(base_path,filename))
 
-
   return jsonify(plate_result,registration_result)
 
 
@@ -134,11 +107,7 @@ def upload_file():
 
 if __name__ == '__main__':
   # application.run(host='0.0.0.0',port=5000,debug = True)
-  #  application.run(port=5000,debug = True)
-  http = WSGIServer(('0.0.0.0', 5000), application.wsgi_app) 
-
-    # Serve your application
-  http.serve_forever()
+   application.run(port=5000,debug = True)
 
 
 

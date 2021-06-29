@@ -45,7 +45,7 @@ class Detector:
                     cv2.imwrite('{}/cropped-{}'.format(self.base_path,image_path),crop_img)
     
                 chars = sorted(chars, key=lambda x: x[3])
-                print(chars)
+      
                 for i in range(0,len(chars)):
                     platetext='{}{}'.format(platetext,chars[i][0])
                     charbox.append(str(chars[i]))
@@ -171,7 +171,8 @@ class Detector:
         char[0].append('/')   
         for i in range(0,len(char[0])):
             if(char[0][i]=='/'):
-                print('hello')
+                continue
+          
         test_list=char[0]
      
         size = len(test_list)
