@@ -18,57 +18,20 @@ import os
 application = Flask(__name__)
 base_path=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'received'))
 
-
+@application.route('/api/v2' , methods=['POST'])
 def upload_apiv2():
   start_time = time.time()
-  file = request.files['image']
+  # file = request.files['image']
   
   confidence=request.form['confidence']
   version=request.form['version']
+  print(confidence,version)
 
-  filename = secure_filename(file.filename)
-  file.save('{}/{}'.format(base_path,filename))
-  image_uploded=Inference()
-  roi=Detector(float(confidence))
-  image_path=filename
-  classes,boxes,scores,height,width,image=list(image_uploded.predict_plate(filename))
-  curTime = time.time()
-  processingTime = curTime - start_time
-  platelabel,platescore,platebox,crop_image=roi.detect_plate(classes,boxes,scores,height,width,image_path,image)
-  plate_result={"plate":{"platelabel":platelabel, "platescore":platescore,"platebox":platebox,"imagename":image_path}}
-  if (platelabel=='plate'):
-      curTime = time.time()
-      image_cropped=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'received'))
-      classes,boxes,scores,height,width=image_uploded.predict_registration('{}/cropped-{}'.format(image_cropped,image_path))
-      registrationlabel,registrationscore,registrationbox,registrationoverlapindex=roi.detect_registration(classes,boxes,scores,height,width,image_cropped)
-      processingTime = curTime - start_time
-      topregistration=roi.top_registration(registrationoverlapindex,registrationlabel,registrationscore)
-      if(topregistration==[]):
-        labeltext=registrationlabel
-        registrationscore=list(map(float, registrationscore))
-        if(len(registrationscore)>=1):
-          registrationlabel=[labeltext,round(mean(registrationscore),2)]
-      else:
-        registrationlabel=topregistration[0]
-      registration_result={"registration":{"processingTime":processingTime,"registrationlabel":registrationlabel, "registrationscore":registrationscore,"registrationbox":registrationbox,"imagename":image_path,"top_registration":topregistration}}
-  else:
-      classes,boxes,scores,height,width=image_uploded.predict_registration('{}'.format(image_path))
-      registrationlabel,registrationscore,registrationbox,registrationoverlapindex=roi.detect_registration(classes,boxes,scores,height,width,image_path)
-      processingTime = curTime - start_time
-      topregistration=roi.top_registration(registrationoverlapindex,registrationlabel,registrationscore)
-      if(topregistration==[]):
-        labeltext=registrationlabel
-        registrationscore=list(map(float, registrationscore))
-        if(len(registrationscore)>=1):
-          registrationlabel=[labeltext,round(mean(registrationscore),2)]
-      else:
-        registrationlabel=topregistration[0]
+  # filename = secure_filename(file.filename)
+  # file.save('{}/{}'.format(base_path,filename))
+  
 
-      registration_result={"registration":{"processingTime":processingTime,"registrationlabel":registrationlabel, "registrationscore":registrationscore,"registrationbox":registrationbox,"imagename":image_path,"top_registration":topregistration}}
-  os.remove('{}/{}'.format(base_path,filename))
-
-
-  return jsonify(plate_result,registration_result)
+  return jsonify()
 
 
 

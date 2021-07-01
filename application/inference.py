@@ -3,14 +3,26 @@ import os
 import tensorflow as tf
 import cv2
 import numpy as np
+from tensorflow.keras.models import Model
+from tensorflow.keras.layers import Dense, GlobalAveragePooling2D, Dropout
+from tensorflow.keras.applications.inception_v3 import InceptionV3, preprocess_input
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.gridspec as gridspec
+from tensorflow.keras.preprocessing import image
+from  tensorflow.keras.models import load_model
+
+
 
 
 inference_path=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'inferencegraphs'))
 
 predictregistration_v1=tf.saved_model.load('{}/character/v1/saved_model'.format(inference_path))
-#predictregistration_v2=tf.saved_model.load('{}/character/v2/saved_model'.format(inference_path))
-#predictregistration_v3=tf.saved_model.load('{}/character/v3/saved_model'.format(inference_path))
+# #predictregistration_v2=tf.saved_model.load('{}/character/v2/saved_model'.format(inference_path))
+# #predictregistration_v3=tf.saved_model.load('{}/character/v3/saved_model'.format(inference_path))
 predictplate=tf.saved_model.load('{}/plate/saved_model'.format(inference_path))
+jurisdiction_model = load_model('{}/jurisdiction/v1'.format(inference_path))
+
 
 #Add new method if there is a new model for inference
 
@@ -22,6 +34,7 @@ class Inference:
         self.inference_path=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'inferencegraphs'))
         self.classes_path=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'classes'))
         self.base_path=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'received'))
+    
 
     
     def predict_plate(self,image_path):
@@ -37,6 +50,7 @@ class Inference:
         width = np.size(image, 1)
 
  
+
 
 
         image_np = np.array(image)
@@ -60,6 +74,28 @@ class Inference:
         classes= detections['detection_classes'].astype(np.int64)
         boxes = detections['detection_boxes']
         return (classes,boxes,scores,height,width,image)
+    
+    def predict_jurisdiction(self,image_path):
+        img = image.load_img(image_path, target_size=(299, 299))
+        x = image.img_to_array(img)
+        x = np.expand_dims(x, axis=0)
+        x = preprocess_input(x)
+        predict=jurisdiction_model.predict(x)
+        preds = predict[0]
+        data=[]
+        labels=['AL', 'AR', 'AZ', 'CA', 'CO', 'FL', 'GA', 'IL', 'IN', 'LA1', 'LA2', 'MO', 'NJ', 'NY', 'OH', 'OK', 'PA', 'TN', 'TX', 'TXDV', 'TXS', 'TXT', 'VA']
+
+        for z in range(0,len(labels)):
+            d=labels[z],preds[z]
+            data.append(d)
+        state=sorted(data,key=lambda x: x[1], reverse=True)[0]
+        jurisdiction=state[0]
+        jurisdicton_score=state[1]
+        return {"state":jurisdiction,'jurisdiction_score':jurisdicton_score}
+  
+
+
+
         
         
     def predict_registration(self,image_path):
@@ -84,7 +120,7 @@ class Inference:
         # elif (version=='v3'):
         #     detections = predictregistration_v3(input_tensor)
         # else:
-        detections = predictregistration_v1(input_tensor)
+        detections = predictregistration_v2(input_tensor)
 
 
         num_detections = int(detections.pop('num_detections'))
@@ -125,3 +161,7 @@ class Inference:
 
 if __name__ == '__main__':
     print('main')
+    a=Inference()
+    for images in os.listdir('F:/training/2019-04-19-00-38-04_29-6072-cropped'):
+
+        print(a.predict_jurisdiction('F:/training/2019-04-19-00-38-04_29-6072-cropped/{}'.format(images)))
