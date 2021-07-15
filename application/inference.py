@@ -96,7 +96,7 @@ class Inference:
 
 
 
-        
+       #test 
         
     def predict_registration(self,image_path):
      
