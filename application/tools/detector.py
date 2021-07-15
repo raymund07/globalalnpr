@@ -41,9 +41,12 @@ class Detector:
                 char=[class_name,scores[i],ymin,xmin,ymax,xmax]
                 chars.append(char)
                 if(class_name=='plate'):
+                    dim=(300,150)
                     crop_img = image[ymin:ymax, xmin:xmax]
+                    crop_img = cv2.resize(crop_img, dim, interpolation = cv2.INTER_AREA)
+
                     cv2.imwrite('{}/cropped-{}'.format(self.base_path,image_path),crop_img)
-    
+
                 chars = sorted(chars, key=lambda x: x[3])
       
                 for i in range(0,len(chars)):
