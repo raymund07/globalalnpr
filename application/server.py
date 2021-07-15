@@ -19,13 +19,6 @@ import os
 application = Flask(__name__)
 base_path=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'received'))
 
-@application.route('/upload')
-def upload_render():
-
-   return render_template('main/template/index-download.html')
-@application.route('/web')
-def upload_web():
-   return render_template('webupload.html')
 @application.route('/test', methods=['POST'])
 def test():
    a= request.files['image']
@@ -34,7 +27,7 @@ def test():
    
    print(a,b)
    return 'hello'
-@application.route('/plate')
+@application.route('/api/character')
 def plate():
     start_time = time.time()
     file = request.files['image']
@@ -47,12 +40,8 @@ def plate():
     image_uploded=Inference()
     roi=Detector(float(confidence))
     image_path=filename
-    classes,boxes,scores,height,width,image=list(image_uploded.predict_plate(filename))
-    curTime = time.time()
-    processingTime = curTime - start_time
-    platelabel,platescore,platebox,crop_image=roi.detect_plate(classes,boxes,scores,height,width,image_path,image)
-    plate_result={"plate":{"platelabel":platelabel, "platescore":platescore,"platebox":platebox,"imagename":image_path},"processing_time":processingTime}
-    return jsonify(plate_result)
+    result=image_uploded.predict_charlocation(image_path)
+    return jsonify(result)
 
 @application.route('/api/v2' , methods=['POST'])
 

@@ -17,9 +17,9 @@ from  tensorflow.keras.models import load_model
 
 inference_path=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'inferencegraphs'))
 
-predictregistration_v1=tf.saved_model.load('{}/character/v1/saved_model'.format(inference_path))
+#predictregistration_v1=tf.saved_model.load('{}/character/v1/saved_model'.format(inference_path))
 #predictregistration_v2=tf.saved_model.load('{}/character/v2/saved_model'.format(inference_path))
-# #predictregistration_v3=tf.saved_model.load('{}/character/v3/saved_model'.format(inference_path))
+predictregistration_v3=tf.saved_model.load('{}/character/v3/saved_model'.format(inference_path))
 predictplate=tf.saved_model.load('{}/plate/saved_model'.format(inference_path))
 jurisdiction_model = load_model('{}/jurisdiction/v1'.format(inference_path))
 
@@ -91,7 +91,7 @@ class Inference:
         state=sorted(data,key=lambda x: x[1], reverse=True)[0]
         jurisdiction=state[0]
         jurisdicton_score=state[1]
-        return {"state":jurisdiction,'jurisdiction_score':jurisdicton_score}
+        return {"state":jurisdiction,'jurisdiction_score':str(jurisdicton_score)}
   
 
 
@@ -120,7 +120,7 @@ class Inference:
         # elif (version=='v3'):
         #     detections = predictregistration_v3(input_tensor)
         # else:
-        detections = predictregistration_v1(input_tensor)
+        detections = predictregistration_v3(input_tensor)
 
 
         num_detections = int(detections.pop('num_detections'))
