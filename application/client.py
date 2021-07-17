@@ -8,7 +8,7 @@ c=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'training/imag
 
 
 # my_img = {'image': open('{}/2.jpg'.format(b), 'rb'),'model':'plate'}
-F:/training/2019-04-14-00-38-04_22-6041/TX01011181020190413140942703293010190413140942329_1.JPG
+
 
 # r = requests.post('https://alpr-s4uhkej6la-df.a.run.app/api/v2',files=my_img,  data={'confidence':.80})
 
