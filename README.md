@@ -42,22 +42,22 @@ confidence.
 * [X] Plate Localization 
 * [X] Character Localization and Recognition:
   * [X] Florida,Texas,California ( Current Series )
-  * [] Illinois, Maryland, Massachusetts
-  * []Michigan, Missouri, North Carolina
-  * []New Jersey, New York, Ohio
-  * []Ontario, Pennsylvania, Quebec
-  * []Virginia, Washington, Wisconsin.
+  * [X] Illinois, Maryland, Massachusetts
+  * [X]Michigan, Missouri, North Carolina
+  * [X]New Jersey, New York, Ohio
+  * [X]Ontario, Pennsylvania, Quebec
+  * [X]Virginia, Washington, Wisconsin.
 * [X] Jurisdiction (Object Detection) - Unique Symbols
   * [X] California, Florida, Texas, Lousiana
-  * [] AZ, NY, GA, CT, OH
+  * [X] AZ, NY, GA, CT, OH
   * [] VA, OK, CO, IN , NJ
   * [] MO, MD, AL, PA, NV
   * [] NC, SC, WI, WA, TN 
   * [] OR, AR, MI , UT, MN, IA, KS
   * [] MA, MS, RI, ID, NM, ND
   * []-KY, NH, NE, MT, ME, WV, SD, DE, CT HI, WY , AK 
-- [] Jurisdiction (Classifier)
-- [] State Classification ( Standard Issue, Veterans, Etc)
+- [X] Jurisdiction (Classifier)
+- [X] State Classification ( Standard Issue, Veterans, Etc)
 - [] Stacked Characters (Character Recognition) - Additional Training
 - [] Us Teritories and Other Countries (Character Recognition)- Additional Training 
 
