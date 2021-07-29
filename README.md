@@ -43,10 +43,10 @@ confidence.
 * [X] Character Localization and Recognition:
   * [X] Florida,Texas,California ( Current Series )
   * [X] Illinois, Maryland, Massachusetts
-  * [X]Michigan, Missouri, North Carolina
-  * [X]New Jersey, New York, Ohio
-  * [X]Ontario, Pennsylvania, Quebec
-  * [X]Virginia, Washington, Wisconsin.
+  * [X] Michigan, Missouri, North Carolina
+  * [X] New Jersey, New York, Ohio
+  * [X] Ontario, Pennsylvania, Quebec
+  * [X] Virginia, Washington, Wisconsin.
 * [X] Jurisdiction (Object Detection) - Unique Symbols
   * [X] California, Florida, Texas, Lousiana
   * [X] AZ, NY, GA, CT, OH
