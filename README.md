@@ -38,25 +38,16 @@ review of the solution and need.
 confidence.
 
 ## Initial Requirement:
-### Training Models: 3/13
+### Training Models: 2/6
 * [X] Plate Localization 
 * [X] Character Localization and Recognition:
   * [X] Florida,Texas,California ( Current Series )
-  * [] Illinois, Maryland, Massachusetts
-  * []Michigan, Missouri, North Carolina
-  * []New Jersey, New York, Ohio
-  * []Ontario, Pennsylvania, Quebec
-  * []Virginia, Washington, Wisconsin.
-* [X] Jurisdiction (Object Detection) - Unique Symbols
-  * [X] California, Florida, Texas, Lousiana
-  * [] AZ, NY, GA, CT, OH
-  * [] VA, OK, CO, IN , NJ
-  * [] MO, MD, AL, PA, NV
-  * [] NC, SC, WI, WA, TN 
-  * [] OR, AR, MI , UT, MN, IA, KS
-  * [] MA, MS, RI, ID, NM, ND
-  * []-KY, NH, NE, MT, ME, WV, SD, DE, CT HI, WY , AK 
-- [] Jurisdiction (Classifier)
+  * [X] Illinois, Maryland, Massachusetts
+  * [X] Michigan, Missouri, North Carolina
+  * [X] New Jersey, New York, Ohio
+  * [X] Ontario, Pennsylvania, Quebec
+  * [X] Virginia, Washington, Wisconsin.
+- [] Jurisdiction (Classifier) ( IN PROGRESS )
 - [] State Classification ( Standard Issue, Veterans, Etc)
 - [] Stacked Characters (Character Recognition) - Additional Training
 - [] Us Teritories and Other Countries (Character Recognition)- Additional Training 
