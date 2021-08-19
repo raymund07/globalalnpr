@@ -47,7 +47,7 @@ confidence.
   * [X] New Jersey, New York, Ohio
   * [X] Ontario, Pennsylvania, Quebec
   * [X] Virginia, Washington, Wisconsin.
-- [] Jurisdiction (Classifier) ( IN PROGRESS )
+- [X] Jurisdiction (Classifier) ( IN PROGRESS )
 - [x] Data Generation
   * [X] DE
 - [] State Classification ( Standard Issue, Veterans, Etc)
