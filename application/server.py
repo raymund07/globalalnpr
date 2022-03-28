@@ -257,7 +257,7 @@ def predict(sct_img):
 if __name__ == '__main__':
   # application.run(host='0.0.0.0',port=5000,debug = True)
   #  application.run(port=5000,debug = True)
-  http = WSGIServer(('localhost', 5000), application.wsgi_app) 
+   http = WSGIServer(('0.0.0.0', 5000), application.wsgi_app) 
 
     # Serve your application
   http.serve_forever()
