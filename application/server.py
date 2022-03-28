@@ -47,19 +47,20 @@ def plate():
     
 @application.route('/mdta' , methods=['POST'])
 def mdta():
-    start_time = time.time()
-    file = request.files['image']
+    print('hello');
+    # start_time = time.time()
+    # file = request.files['image']
     
-    confidence=request.form['confidence']
-    version=request.form['version']
+    # confidence=request.form['confidence']
+    # version=request.form['version']
 
-    filename = secure_filename(file.filename)
-    file.save('{}/{}'.format(base_path,filename))
-    image_uploded=Inference()
-    roi=Detector(float(confidence))
-    image_path=filename
-    result=image_uploded.predict_charlocation(image_path)
-    return jsonify(result)
+    # filename = secure_filename(file.filename)
+    # file.save('{}/{}'.format(base_path,filename))
+    # image_uploded=Inference()
+    # roi=Detector(float(confidence))
+    # image_path=filename
+    # result=image_uploded.predict_charlocation(image_path)
+    # return jsonify(result)
 
   
 
