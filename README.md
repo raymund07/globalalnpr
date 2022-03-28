@@ -88,11 +88,12 @@ confidence.
 ### Let us see some result 
 You can test the initial models intalled hosted in the image. Test via local installation or via remote server. Result includes plate location, characters detection and top 10 registration with confidence level See example below \
 **Local Environment** \
+curl -o 1.jpg http://10.0.99.73:4000/images/roi//5/2021/12/17/15/502_5_20211217152701975_RF_1.jpg?
 `curl -i -X POST -F  -F "image=@1.jpg" https://alpr-s4uhkej6la-de.a.run.app/api/v2 ` \
 **Remote Testing - Azure App Service** \C:\Users\Isaac\global\training_demo\1.jpg
 `curl -i -X POST -F model=plate  -F "image=@images/p3.jpg" https://globalalnpr.azurewebsites.net/api/v2` 
 
-![Result](https://github.com/raymund07/globalalnpr/blob/master/application/sample/test.JPG)
+
 
 
 

@@ -2,6 +2,7 @@ from tools.detector import Detector
 from flask import Flask, render_template, request, jsonify
 from numpy.testing._private.utils import print_assert_equal
 from werkzeug.utils import secure_filename
+import mdta
 import base64
 import io
 from PIL import Image
@@ -18,6 +19,7 @@ import time
 import os
 application = Flask(__name__)
 base_path=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'received'))
+
 
 @application.route('/test', methods=['POST'])
 def test():
@@ -42,6 +44,24 @@ def plate():
     image_path=filename
     result=image_uploded.predict_charlocation(image_path)
     return jsonify(result)
+    
+@application.route('/mdta' , methods=['POST'])
+def mdta():
+    start_time = time.time()
+    file = request.files['image']
+    
+    confidence=request.form['confidence']
+    version=request.form['version']
+
+    filename = secure_filename(file.filename)
+    file.save('{}/{}'.format(base_path,filename))
+    image_uploded=Inference()
+    roi=Detector(float(confidence))
+    image_path=filename
+    result=image_uploded.predict_charlocation(image_path)
+    return jsonify(result)
+
+  
 
 @application.route('/api/v2' , methods=['POST'])
 
@@ -130,7 +150,7 @@ def upload_file():
 if __name__ == '__main__':
   # application.run(host='0.0.0.0',port=5000,debug = True)
   #  application.run(port=5000,debug = True)
-  http = WSGIServer(('0.0.0.0', 5000), application.wsgi_app) 
+  http = WSGIServer(('localhost', 5000), application.wsgi_app) 
 
     # Serve your application
   http.serve_forever()

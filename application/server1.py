@@ -54,6 +54,8 @@ def upload_file():
       f.save(imageFile)
 
     objectDetectResults = predictImages ()
+
+    
     return jsonify(objectDetectResults)
 
 

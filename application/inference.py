@@ -24,6 +24,8 @@ predictplate=tf.saved_model.load('{}/plate/v4/saved_model'.format(inference_path
 jurisdiction_model = load_model('{}/jurisdiction/v1'.format(inference_path))
 
 
+
+
 #Add new method if there is a new model for inference
 
 class Inference:

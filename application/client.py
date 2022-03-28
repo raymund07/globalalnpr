@@ -7,27 +7,29 @@ c=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'training/imag
 
 
 
-# my_img = {'image': open('{}/2.jpg'.format(b), 'rb'),'model':'plate'}
+my_img = {'image': open('{}/2.jpg'.format(b), 'rb')}
+print(my_img)
+
+r = requests.post('https://alpr-s4uhkej6la-de.a.run.app/api/v2', files=my_img,data={'confidence':.50,'version':'v1'})        
+
+print(r)
 
 
-# r = requests.post('https://alpr-s4uhkej6la-df.a.run.app/api/v2',files=my_img,  data={'confidence':.80})
+
+# for i in os.listdir('F:/global/2019-04-02/2019-04-02-05-48-00_43-3964'):
+#     try:
 
 
-
-for i in os.listdir('F:/global/2019-04-02/2019-04-02-05-48-00_43-3964'):
-    try:
-
-
-        my_img = {'image': open('F:/global/2019-04-02/2019-04-02-05-48-00_43-3964/{}'.format(i), 'rb'),}
-        r = requests.post('https://alpr-s4uhkej6la-de.a.run.app/api/v2', files=my_img,data={'confidence':.50,'version':'v1'})        
+#         my_img = {'image': open('F:/global/2019-04-02/2019-04-02-05-48-00_43-3964/{}'.format(i), 'rb'),}
+#         r = requests.post('https://alpr-s4uhkej6la-de.a.run.app/api/v2', files=my_img,data={'confidence':.50,'version':'v1'})        
         
 
-        y=json.loads(r.text)
-        print(y)
-    except:
-        continue
-    # string=y[1]['registration']['character']
-    # index=y[1]['registration']['overlap']
+#         y=json.loads(r.text)
+#         print(y)
+#     except:
+#         continue
+#     # string=y[1]['registration']['character']
+#     # index=y[1]['registration']['overlap']
   
 
 
