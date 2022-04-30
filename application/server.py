@@ -1,20 +1,7 @@
 import os
 import tensorflow as tf
-from object_detection.utils import label_map_util
-import tools.utils.visualization_utils as viz_utils
-from object_detection.builders import model_builder
-from object_detection.utils import config_util
-import csv
-import time
-import cv2 
-import numpy as np
-from PIL import Image
-import os
-import requests
 import cv2
-import json
 import numpy as np
-from time import sleep
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Dense, GlobalAveragePooling2D, Dropout
 from tensorflow.keras.applications.inception_v3 import InceptionV3, preprocess_input
@@ -23,14 +10,6 @@ import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 from tensorflow.keras.preprocessing import image
 from  tensorflow.keras.models import load_model
-from tools.detector import Detector
-from flask import Flask, render_template, request, jsonify
-from numpy.testing._private.utils import print_assert_equal
-from werkzeug.utils import secure_filename
-import base64
-import io
-from PIL import Image
-
 # from inference import Inference
 import shutil
 import os

@@ -7,20 +7,20 @@ c=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'training/imag
 
 
 
-# my_img = {'image': open('{}/2.jpg'.format(b), 'rb')}
-# print(my_img)
-# r = requests.post('https://alpr-s4uhkej6la-de.a.run.app/api/v2', files=my_img,data={'confidence':.50,'version':'v1'})        
-# print(r)
-
 my_img = {'image': open('{}/2.jpg'.format(b), 'rb')}
 print(my_img)
-r = requests.post('http://localhost:5000/api/v2', files=my_img)        
-print(r.text)
-my_img = {'image': open('{}/2.jpg'.format(b), 'rb')}
-r = requests.post('http://localhost:6000/api/v2/states', files=my_img)        
+r = requests.post('https://mdta1-dxwmpej2dq-uc.a.run.app', files=my_img,data={'confidence':.50,'version':'v1'})        
 print(r.text)
 
-mon = {'top': 300, 'left':292, 'width':(1306-292), 'height':(701-300)}
+# my_img = {'image': open('{}/2.jpg'.format(b), 'rb')}
+# print(my_img)
+# r = requests.post('http://localhost:5000/api/v2', files=my_img)        
+# print(r.text)
+# my_img = {'image': open('{}/2.jpg'.format(b), 'rb')}
+# r = requests.post('http://localhost:6000/api/v2/states', files=my_img)        
+# print(r.text)
+
+# mon = {'top': 300, 'left':292, 'width':(1306-292), 'height':(701-300)}
 
 
 # for i in os.listdir('F:/global/2019-04-02/2019-04-02-05-48-00_43-3964'):
