@@ -73,6 +73,18 @@ application = Flask(__name__)
 sct = mss()
 img1=''
 mp=p.position()
+gpus = tf.config.list_physical_devices('GPU')
+if gpus:
+  # Restrict TensorFlow to only allocate 1GB of memory on the first GPU
+  try:
+    tf.config.set_logical_device_configuration(
+        gpus[0],
+        [tf.config.LogicalDeviceConfiguration(memory_limit=512)])
+    logical_gpus = tf.config.list_logical_devices('GPU')
+    print(len(gpus), "Physical GPUs,", len(logical_gpus), "Logical GPUs")
+  except RuntimeError as e:
+    # Virtual devices must be set before GPUs have been initialized
+    print(e)
 
 
 # category_index = label_map_util.create_category_index_from_labelmap('annotations/character/label_map.pbtxt')
@@ -168,17 +180,16 @@ def on_release(key):
         keys=[]
         return False
 @application.route('/api/v2' , methods=['POST'])     
-def predict(sct_img):
-    file = request.files['image']
+def predict():
     begin_time = time()
-    print(begin_time);
+    file = request.files['image']
     filename = secure_filename(file.filename)
     file.save('{}/{}'.format(base_path,filename))
     img_bgr=cv2.imread('{}/{}'.format(base_path,filename))
     # img = Image.frombytes('RGB', (sct_img.size.width, sct_img.size.height), sct_img.rgb)
     # img_bgr = cv2.cvtColor(np.array(img), cv2.COLOR_RGB2BGR)
     # img_bgr = cv2.resize(img_bgr, (488,231), interpolation = cv2.INTER_AREA)
-    # img_jurs=cv2.resize(img_bgr, (299,299), interpolation = cv2.INTER_AREA)
+    img_jurs=cv2.resize(img_bgr, (299,299), interpolation = cv2.INTER_AREA)
     image_np = np.array(img_bgr)
     input_tensor = tf.convert_to_tensor(image_np)
     input_tensor = tf.convert_to_tensor(np.expand_dims(image_np, 0), dtype=tf.float32)
@@ -250,13 +261,14 @@ def predict(sct_img):
     
     # juris=predict_jurisdiction(img_jurs)
     # print(juris)
-    return platetext
+    return result
 
 
 
 if __name__ == '__main__':
   # application.run(host='0.0.0.0',port=5000,debug = True)
-  #  application.run(port=5000,debug = True)
+  # application.run(port=5000,debug = True)
+  # http = WSGIServer(('localhost', 5000), application.wsgi_app) 
   http = WSGIServer(('0.0.0.0', 5000), application.wsgi_app) 
 
     # Serve your application
