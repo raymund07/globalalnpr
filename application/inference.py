@@ -27,6 +27,7 @@ jurisdiction_model = load_model('{}/jurisdiction/v1'.format(inference_path))
 
 
 
+
 #Add new method if there is a new model for inference
 
 class Inference:
