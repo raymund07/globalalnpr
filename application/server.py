@@ -96,6 +96,7 @@ def upload_apiv2():
         registrationlabel=topregistration[0]
       
       registration_result={"registration":{"processingTime":processingTime,"registrationlabel":registrationlabel,"registrationscore":registrationscore,"registrationbox":registrationbox,"imagename":image_path,"top_registration":topregistration}}
+  
   os.remove('{}/{}'.format(base_path,filename))
   os.remove('{}/cropped-{}'.format(base_path,filename))
   print(registration_result,jurisdiction)

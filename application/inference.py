@@ -19,6 +19,7 @@ inference_path=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', '
 
 #predictregistration_v1=tf.saved_model.load('{}/character/v1/saved_model'.format(inference_path))
 #predictregistration_v2=tf.saved_model.load('{}/character/v2/saved_model'.format(inference_path))
+predictregistration=tf.saved_model.load('{}/character/v4/saved_model'.format(inference_path))
 predictregistration=tf.saved_model.load('{}/character/mdta/saved_model'.format(inference_path))
 predictplate=tf.saved_model.load('{}/plate/v4/saved_model'.format(inference_path))
 jurisdiction_model = load_model('{}/jurisdiction/v1'.format(inference_path))
@@ -146,6 +147,18 @@ class Inference:
         boxes = detections['detection_boxes']
         return (classes,boxes,scores,height,width)
 
+        # image_expanded = np.expand_dims(image, axis=0)
+        # (boxes, scores, classes, num) = character_session.run(
+        #     [character_detection_boxes, character_detection_scores,
+        #         character_detection_classes, character_num_detections],
+        #     feed_dict={character_image_tensor: image_expanded})
+
+        # classes = np.squeeze(classes).astype(np.int32)
+        # scores = np.squeeze(scores)
+        # boxes = np.squeeze(boxes)
+        # return (classes,boxes,scores,height,width)
+
+    
         # image_expanded = np.expand_dims(image, axis=0)
         # (boxes, scores, classes, num) = character_session.run(
         #     [character_detection_boxes, character_detection_scores,
