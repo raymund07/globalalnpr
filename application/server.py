@@ -62,7 +62,7 @@ def upload_apiv2():
   processingTime = curTime - start_time
   platelabel,platescore,platebox,crop_image=roi.detect_plate(classes,boxes,scores,height,width,image_path,image)
   plate_result={"plate":{"platelabel":platelabel, "platescore":platescore,"platebox":platebox,"imagename":image_path}}
-  
+
   if (platelabel=='plate' and version=='v1'):
       curTime = time.time()
       image_cropped=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'received'))
@@ -96,8 +96,8 @@ def upload_apiv2():
       
       registration_result={"registration":{"processingTime":processingTime,"registrationlabel":registrationlabel,"registrationscore":registrationscore,"registrationbox":registrationbox,"imagename":image_path,"top_registration":topregistration}}
   
-  os.remove('{}/{}'.format(base_path,filename))
-  os.remove('{}/cropped-{}'.format(base_path,filename))
+  # os.remove('{}/{}'.format(base_path,filename))
+  # os.remove('{}/cropped-{}'.format(base_path,filename))
   print(registration_result,jurisdiction)
 
 
