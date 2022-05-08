@@ -63,7 +63,7 @@ def upload_apiv2():
   platelabel,platescore,platebox,crop_image=roi.detect_plate(classes,boxes,scores,height,width,image_path,image)
   plate_result={"plate":{"platelabel":platelabel, "platescore":platescore,"platebox":platebox,"imagename":image_path}}
 
-  if (platelabel=='plate'):
+  if (platelabel=='plate' and version=='v1'):
       curTime = time.time()
       image_cropped=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'received'))
       classes,boxes,scores,height,width=image_uploded.predict_registration('{}/cropped-{}'.format(image_cropped,image_path))
