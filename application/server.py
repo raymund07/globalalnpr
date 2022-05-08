@@ -63,7 +63,7 @@ def upload_apiv2():
   platelabel,platescore,platebox,crop_image=roi.detect_plate(classes,boxes,scores,height,width,image_path,image)
   plate_result={"plate":{"platelabel":platelabel, "platescore":platescore,"platebox":platebox,"imagename":image_path}}
 
-  if (platelabel=='plate' and version=='v1'):
+  if (platelabel=='plate'):
       curTime = time.time()
       image_cropped=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'received'))
       classes,boxes,scores,height,width=image_uploded.predict_registration('{}/cropped-{}'.format(image_cropped,image_path))
@@ -80,6 +80,23 @@ def upload_apiv2():
       else:
         registrationlabel=topregistration[0]
       registration_result={"registration":{"processingTime":processingTime,"registrationlabel":registrationlabel, "registrationscore":registrationscore,"registrationbox":registrationbox,"imagename":image_path,"top_registration":topregistration}}
+  elif(version=='mdta'):
+      
+      classes,boxes,scores,height,width=image_uploded.predict_registration('{}'.format(image_path))
+      jurisdiction=image_uploded.predict_jurisdiction('{}'.format(image_path))
+      registrationlabel,registrationscore,registrationbox,registrationoverlapindex=roi.detect_registration(classes,boxes,scores,height,width,image_path)
+      processingTime = curTime - start_time
+      topregistration=roi.top_registration(registrationoverlapindex,registrationlabel,registrationscore)
+      if(topregistration==[]):
+        labeltext=registrationlabel
+        registrationscore=list(map(float, registrationscore))
+        if(len(registrationscore)>=1):
+          registrationlabel=[labeltext,round(mean(registrationscore),2)]
+      else:
+        registrationlabel=topregistration[0]
+      
+      registration_result={"registration":{"processingTime":processingTime,"registrationlabel":registrationlabel,"registrationscore":registrationscore,"registrationbox":registrationbox,"imagename":image_path,"top_registration":topregistration}}
+  
   else:
       classes,boxes,scores,height,width=image_uploded.predict_registration('{}'.format(image_path))
       jurisdiction=image_uploded.predict_jurisdiction('{}/cropped-{}'.format(image_cropped,image_path))

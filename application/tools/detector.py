@@ -97,6 +97,7 @@ class Detector:
                 chars.append(char)
     
         chars = sorted(chars, key=lambda x: x[3])
+        
         box1StartY, box1StartX, box1EndY, box1EndX=0,0,0,0
         previous_index=''
         achars=''
