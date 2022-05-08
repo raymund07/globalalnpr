@@ -82,8 +82,8 @@ def upload_apiv2():
       registration_result={"registration":{"processingTime":processingTime,"registrationlabel":registrationlabel, "registrationscore":registrationscore,"registrationbox":registrationbox,"imagename":image_path,"top_registration":topregistration}}
   elif(version=='mdta'):
       
-      classes,boxes,scores,height,width=image_uploded.predict_registration('{}'.format(image_path))
-      jurisdiction=image_uploded.predict_jurisdiction('{}'.format(image_path))
+      classes,boxes,scores,height,width=image_uploded.predict_registration('{}/{}'.format(image_cropped,image_path))
+      jurisdiction=image_uploded.predict_jurisdiction('{}/{}'.format(image_cropped,image_path))
       registrationlabel,registrationscore,registrationbox,registrationoverlapindex=roi.detect_registration(classes,boxes,scores,height,width,image_path)
       processingTime = curTime - start_time
       topregistration=roi.top_registration(registrationoverlapindex,registrationlabel,registrationscore)
