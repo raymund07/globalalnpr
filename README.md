@@ -86,6 +86,12 @@ confidence.
 2. docker run -it -d -p 5000:5000 alnpr
 
 
+### cloudrun
+1. docker build -t alnpr .
+2. docker tag alnpr:lastest gcr.io/mdta-348812/alnpr
+3. docker push
+
+
 
 ### Let us see some result 
 You can test the initial models intalled hosted in the image. Test via local installation or via remote server. Result includes plate location, characters detection and top 10 registration with confidence level See example below \
