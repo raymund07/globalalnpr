@@ -87,7 +87,7 @@ confidence.
 
 
 ### cloudrun
-1. docker build -t alnpr .
+1. docker build -t gcr.io/mdta-348812/alnpr .
 2. docker tag alnpr:lastest gcr.io/mdta-348812/alnpr
 3. docker push
 
