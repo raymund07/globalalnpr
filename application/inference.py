@@ -22,7 +22,7 @@ inference_path=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', '
 predictregistration=tf.saved_model.load('{}/character/v4/saved_model'.format(inference_path))
 predictregistration=tf.saved_model.load('{}/character/mdta/saved_model'.format(inference_path))
 predictplate=tf.saved_model.load('{}/plate/v4/saved_model'.format(inference_path))
-jurisdiction_model = load_model('{}/jurisdiction/mdta'.format(inference_path))
+jurisdiction_model= tf.keras.models.load_model('{}/jurisdiction/mdta'.format(inference_path))
 
 
 
@@ -87,8 +87,7 @@ class Inference:
         predict=jurisdiction_model.predict(x)
         preds = predict[0]
         data=[]
-        labels=['AL', 'AR', 'AZ', 'CA', 'CO', 'FL', 'GA', 'IL', 'IN', 'LA1', 'LA2', 'MO', 'NJ', 'NY', 'OH', 'OK', 'PA', 'TN', 'TX', 'TXDV', 'TXS', 'TXT', 'VA']
-
+        labels=['FL', 'GA', 'IN', 'MA', 'MD', 'MD2', 'MDT', 'MDTS', 'NC', 'NJ', 'NY','PA','VA','VAT']
         for z in range(0,len(labels)):
             d=labels[z],preds[z]
             data.append(d)
