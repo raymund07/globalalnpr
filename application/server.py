@@ -62,6 +62,7 @@ def upload_apiv2():
   processingTime = curTime - start_time
   platelabel,platescore,platebox,crop_image=roi.detect_plate(classes,boxes,scores,height,width,image_path,image)
   plate_result={"plate":{"platelabel":platelabel, "platescore":platescore,"platebox":platebox,"imagename":image_path}}
+  image_cropped=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'received'))
 
   if (platelabel=='plate' and version=='v1'):
       curTime = time.time()
@@ -98,6 +99,7 @@ def upload_apiv2():
       registration_result={"registration":{"processingTime":processingTime,"registrationlabel":registrationlabel,"registrationscore":registrationscore,"registrationbox":registrationbox,"imagename":image_path,"top_registration":topregistration}}
   
   else:
+
       classes,boxes,scores,height,width=image_uploded.predict_registration('{}'.format(image_path))
       jurisdiction=image_uploded.predict_jurisdiction('{}/cropped-{}'.format(image_cropped,image_path))
       registrationlabel,registrationscore,registrationbox,registrationoverlapindex=roi.detect_registration(classes,boxes,scores,height,width,image_path)
@@ -148,6 +150,7 @@ if __name__ == '__main__':
   # application.run(host='0.0.0.0',port=5000,debug = True)
   #  application.run(port=5000,debug = True)
   http = WSGIServer(('0.0.0.0', 5000), application.wsgi_app) 
+  http = WSGIServer(('localhost', 5000), application.wsgi_app) 
 
     # Serve your application
   http.serve_forever()

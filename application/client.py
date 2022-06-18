@@ -10,6 +10,7 @@ c=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'training/imag
 my_img = {'image': open('{}/AAB-5767.jpg'.format(b), 'rb')}
 print(my_img)
 r = requests.post('https://mdta-dxwmpej2dq-de.a.run.app/api/v2', files=my_img,data={'confidence':.50,'version':'v1'})        
+r = requests.post('http://localhost:5000/api/v2', files=my_img,data={'confidence':.50,'version':'v1'})       
 print(r.text)
 
 # my_img = {'image': open('{}/2.jpg'.format(b), 'rb')}

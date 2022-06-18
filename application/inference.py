@@ -22,7 +22,7 @@ inference_path=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', '
 predictregistration=tf.saved_model.load('{}/character/v4/saved_model'.format(inference_path))
 predictregistration=tf.saved_model.load('{}/character/mdta/saved_model'.format(inference_path))
 predictplate=tf.saved_model.load('{}/plate/v4/saved_model'.format(inference_path))
-jurisdiction_model = load_model('{}/jurisdiction/v1'.format(inference_path))
+jurisdiction_model = load_model('{}/jurisdiction/mdta'.format(inference_path))
 
 
 
