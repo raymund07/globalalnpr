@@ -1,17 +1,19 @@
 import os
 import requests
 import json
+from time import sleep
+
 b=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'images'))
 
 c=os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'training/images/texas'))
 
 
 
-my_img = {'image': open('{}/AAB-5767.jpg'.format(b), 'rb')}
-print(my_img)
-r = requests.post('https://mdta-dxwmpej2dq-de.a.run.app/api/v2', files=my_img,data={'confidence':.50,'version':'v1'})        
-r = requests.post('http://localhost:5000/api/v2', files=my_img,data={'confidence':.50,'version':'v1'})       
-print(r.text)
+# my_img = {'image': open('{}/1.png'.format(b), 'rb')}
+# print(my_img)
+# # r = requests.post('https://alnpr-dxwmpej2dq-de.a.run.app/api/v2', files=my_img,data={'confidence':.50,'version':'v1'})        
+# # r = requests.post('http://localhost:5000/api/v2', files=my_img,data={'confidence':.50,'version':'v1'})       
+# print(r.text)
 
 # my_img = {'image': open('{}/2.jpg'.format(b), 'rb')}
 # print(my_img)
@@ -24,20 +26,23 @@ print(r.text)
 # mon = {'top': 300, 'left':292, 'width':(1306-292), 'height':(701-300)}
 
 
-# for i in os.listdir('F:/global/2019-04-02/2019-04-02-05-48-00_43-3964'):
-#     try:
+for i in os.listdir('C:/Users/Isaac/Desktop/training_images/2022-05-23'):
+
+    try:
 
 
-#         my_img = {'image': open('F:/global/2019-04-02/2019-04-02-05-48-00_43-3964/{}'.format(i), 'rb'),}
-#         r = requests.post('https://alpr-s4uhkej6la-de.a.run.app/api/v2', files=my_img,data={'confidence':.50,'version':'v1'})        
+        my_img = {'image': open('C:/Users/Isaac/Desktop/training_images/2022-05-23/{}'.format(i), 'rb'),}
+        r = requests.post('https://alnpr-dxwmpej2dq-de.a.run.app/api/v2', files=my_img,data={'confidence':.90,'version':'mdta'})        
         
 
-#         y=json.loads(r.text)
-#         print(y)
-#     except:
-#         continue
-#     # string=y[1]['registration']['character']
-#     # index=y[1]['registration']['overlap']
+        y=json.loads(r.text)
+        print(json.dumps(y, indent = 1))
+        # print(y)
+        sleep(7)
+    except Exception as e:
+        print(e)
+    # string=y[1]['registration']['character']
+    # index=y[1]['registration']['overlap']
   
 
 
