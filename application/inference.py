@@ -87,7 +87,7 @@ class Inference:
         predict=jurisdiction_model.predict(x)
         preds = predict[0]
         data=[]
-        labels=['FL', 'GA', 'IN', 'MA', 'MD', 'MD2', 'MDT', 'MDTS', 'NC', 'NJ', 'NY','PA','VA','VAT']
+        labels=['PA', 'DC', 'NH', 'MA', 'DL', 'WV', 'NC', 'GA', 'FL', 'NY', 'MDT', 'VAT', 'VA', 'MD2', 'MD', 'NJ', 'IN', 'MDTS']
         for z in range(0,len(labels)):
             d=labels[z],preds[z]
             data.append(d)
